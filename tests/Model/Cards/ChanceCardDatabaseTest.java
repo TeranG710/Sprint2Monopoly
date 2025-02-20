@@ -1,5 +1,6 @@
 package Model.Cards;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class ChanceCardDatabaseTest {
     @Test
     public void TestChanceCardDatabaseCardType() {
         ChanceCardDatabase chanceCardDatabase = new ChanceCardDatabase();
-        assertEquals(CardType.Chance, chanceCardDatabase.getCardType());
+        Assertions.assertEquals(CardType.Chance, chanceCardDatabase.getCardType());
     }
 
     @Test
