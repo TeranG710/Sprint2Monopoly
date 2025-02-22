@@ -8,6 +8,11 @@ public class GameBoard {
         boardElements = new Element[NUM_SPACES];
         initializeBoard();
     }
+
+    public Element[] getBoardElements() {
+        return boardElements;
+    }
+
     private void initializeBoard() {
         boardElements[0] = new Element("GO", 0);
         boardElements[1] = new Element("Mediterranean Avenue", 1);
