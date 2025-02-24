@@ -10,6 +10,7 @@ public class Property extends BoardSpace {
     private final int[] houseRents;  // Rents for 1-4 houses
     private final int hotelRent;
     private final int mortgageValue;
+    private final PropertyColor color;
     private final ColorGroup colorGroup;
     
     private Player owner;
@@ -26,16 +27,19 @@ public class Property extends BoardSpace {
      * @param houseRents Array of rents for 1-4 houses
      * @param hotelRent Rent with a hotel
      * @param mortgageValue Mortgage value
+     * @param color Color of the property
      * @param colorGroup Color group this property belongs to
      */
     public Property(String name, int position, int purchasePrice, int baseRent, 
-                   int[] houseRents, int hotelRent, int mortgageValue, ColorGroup colorGroup) {
+                   int[] houseRents, int hotelRent, int mortgageValue, 
+                   PropertyColor color, ColorGroup colorGroup) {
         super(name, position);
         this.purchasePrice = purchasePrice;
         this.baseRent = baseRent;
         this.houseRents = houseRents;
         this.hotelRent = hotelRent;
         this.mortgageValue = mortgageValue;
+        this.color = color;
         this.colorGroup = colorGroup;
         this.isMortgaged = false;
         this.numHouses = 0;
@@ -64,7 +68,7 @@ public class Property extends BoardSpace {
      * @param player The player who has the option to buy
      */
     private void offerPurchase(Player player) {
-        // In the future, this would interact with the UI
+        // In a real implementation, this would interact with the UI
         // For now, we'll just provide the method signature
     }
 
@@ -177,7 +181,6 @@ public class Property extends BoardSpace {
     }
 
     // Getters and setters
-
     public Player getOwner() {
         return owner;
     }
@@ -204,5 +207,9 @@ public class Property extends BoardSpace {
 
     public ColorGroup getColorGroup() {
         return colorGroup;
+    }
+
+    public PropertyColor getColor() {
+        return color;
     }
 }
