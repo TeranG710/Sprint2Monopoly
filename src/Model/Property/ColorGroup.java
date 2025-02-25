@@ -1,7 +1,9 @@
-package Model;
+package Model.Property;
 
 import java.util.ArrayList;
 import java.util.List;
+import Model.Player; 
+
 
 /**
  * Represents a color group of properties in Monopoly.

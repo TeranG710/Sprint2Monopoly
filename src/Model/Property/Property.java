@@ -1,5 +1,6 @@
-package Model;
-
+package Model.Property;
+import Model.BoardSpace;
+import Model.Player;
 /**
  * Represents a property space on the Monopoly board.
  * Properties can be owned, mortgaged, and improved with houses/hotels.
@@ -31,8 +32,8 @@ public class Property extends BoardSpace {
      * @param colorGroup Color group this property belongs to
      */
     public Property(String name, int position, int purchasePrice, int baseRent, 
-                   int[] houseRents, int hotelRent, int mortgageValue, 
-                   PropertyColor color, ColorGroup colorGroup) {
+                    int[] houseRents, int hotelRent, int mortgageValue, 
+                    PropertyColor color, ColorGroup colorGroup) {
         super(name, position);
         this.purchasePrice = purchasePrice;
         this.baseRent = baseRent;

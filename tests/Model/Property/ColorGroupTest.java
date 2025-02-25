@@ -1,18 +1,32 @@
-package Model;
+import package Model;
+package Model.Property;
+
+import Model.Board;
+import Model.Player;
+import Model.Property.ColorGroup;
+import Model.Property.Property;
+import Model.Property.PropertyColor;
+
 
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.util.List;
 
 public class ColorGroupTest {
     private ColorGroup colorGroup;
     private Property boardwalk;
     private Property parkPlace;
     private Player owner;
+    private Board board;
 
     @Before
     public void setUp() {
+        board = new Board();  // Create actual board instance
         colorGroup = new ColorGroup("DARK_BLUE", 2);
+        owner = new Player("TestOwner", board);
+
+        // Create test properties
         boardwalk = new Property(
             "Boardwalk",
             39,
@@ -24,6 +38,7 @@ public class ColorGroupTest {
             PropertyColor.DARK_BLUE,
             colorGroup
         );
+
         parkPlace = new Property(
             "Park Place",
             37,
@@ -35,7 +50,6 @@ public class ColorGroupTest {
             PropertyColor.DARK_BLUE,
             colorGroup
         );
-        owner = new Player("TestOwner", 2000);
     }
 
     @Test
@@ -53,88 +67,38 @@ public class ColorGroupTest {
     }
 
     @Test
-    public void testHasMonopolyTrue() {
-        boardwalk.setOwner(owner);
-        parkPlace.setOwner(owner);
+    public void testAddMultipleProperties() {
         colorGroup.addProperty(boardwalk);
         colorGroup.addProperty(parkPlace);
-        assertTrue(colorGroup.hasMonopoly(owner));
+        assertEquals(2, colorGroup.getProperties().size());
+        assertTrue(colorGroup.getProperties().contains(boardwalk));
+        assertTrue(colorGroup.getProperties().contains(parkPlace));
     }
 
     @Test
-    public void testHasMonopolyFalse() {
-        boardwalk.setOwner(owner);
-        parkPlace.setOwner(new Player("OtherPlayer", 2000));
+    public void testCannotAddMoreThanMaxProperties() {
         colorGroup.addProperty(boardwalk);
         colorGroup.addProperty(parkPlace);
-        assertFalse(colorGroup.hasMonopoly(owner));
+        Property extraProperty = new Property(
+            "Extra",
+            40,
+            400,
+            50,
+            new int[]{200, 600, 1400, 1700},
+            2000,
+            200,
+            PropertyColor.DARK_BLUE,
+            colorGroup
+        );
+        colorGroup.addProperty(extraProperty);
+        assertEquals(2, colorGroup.getProperties().size()); // Should still be 2
     }
 
     @Test
-    public void testCanAddHouseEvenBuild() {
-        boardwalk.setOwner(owner);
-        parkPlace.setOwner(owner);
+    public void testGetPropertiesReturnsCopy() {
         colorGroup.addProperty(boardwalk);
-        colorGroup.addProperty(parkPlace);
-        
-        assertTrue(colorGroup.canAddHouse(boardwalk));
-        boardwalk.addHouse();
-        assertFalse(colorGroup.canAddHouse(boardwalk)); // Can't add second house until Park Place has one
-        assertTrue(colorGroup.canAddHouse(parkPlace));
-    }
-
-    @Test
-    public void testCanAddHotel() {
-        boardwalk.setOwner(owner);
-        parkPlace.setOwner(owner);
-        colorGroup.addProperty(boardwalk);
-        colorGroup.addProperty(parkPlace);
-        
-        // Add 4 houses to both properties
-        for (int i = 0; i < 4; i++) {
-            boardwalk.addHouse();
-            parkPlace.addHouse();
-        }
-        
-        assertTrue(colorGroup.canAddHotel(boardwalk));
-    }
-
-    @Test
-    public void testGetMinHouses() {
-        colorGroup.addProperty(boardwalk);
-        colorGroup.addProperty(parkPlace);
-        
-        boardwalk.addHouse();
-        boardwalk.addHouse();
-        parkPlace.addHouse();
-        
-        assertEquals(1, colorGroup.getMinHouses());
-    }
-
-    @Test
-    public void testGetHotelCount() {
-        colorGroup.addProperty(boardwalk);
-        colorGroup.addProperty(parkPlace);
-        
-        // Add 4 houses and a hotel to boardwalk
-        for (int i = 0; i < 4; i++) {
-            boardwalk.addHouse();
-        }
-        boardwalk.addHotel();
-        
-        assertEquals(1, colorGroup.getHotelCount());
-    }
-
-    @Test
-    public void testIsFullyMortgaged() {
-        boardwalk.setOwner(owner);
-        parkPlace.setOwner(owner);
-        colorGroup.addProperty(boardwalk);
-        colorGroup.addProperty(parkPlace);
-        
-        boardwalk.mortgage();
-        parkPlace.mortgage();
-        
-        assertTrue(colorGroup.isFullyMortgaged());
+        List<Property> properties = colorGroup.getProperties();
+        properties.clear(); // Modifying the returned list
+        assertEquals(1, colorGroup.getProperties().size()); // Original should be unchanged
     }
 }

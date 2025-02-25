@@ -1,4 +1,6 @@
-package Model;
+package Model.Property;
+
+import Model.Player;
 
 import org.junit.Test;
 import static org.junit.Assert.*;

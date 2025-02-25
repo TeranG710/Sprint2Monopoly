@@ -3,10 +3,12 @@ package Model;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.util.List;
 
 public class BoardSpaceTest {
     private BoardSpace testSpace;
     private Token testToken;
+    private Board board;
 
     // Concrete implementation of BoardSpace for testing
     private class TestBoardSpace extends BoardSpace {
@@ -27,8 +29,9 @@ public class BoardSpaceTest {
 
     @Before
     public void setUp() {
+        board = new Board();
         testSpace = new TestBoardSpace("Test Space", 5);
-        testToken = new Token(); // Assuming Token has a default constructor
+        testToken = new Token("Car");  // Give it a type string
     }
 
     @Test
@@ -62,7 +65,7 @@ public class BoardSpaceTest {
 
     @Test
     public void testMultipleTokens() {
-        Token token2 = new Token();
+        Token token2 = new Token("Dog");  // Give it a type string
         testSpace.addToken(testToken);
         testSpace.addToken(token2);
         assertEquals(2, testSpace.getTokens().size());

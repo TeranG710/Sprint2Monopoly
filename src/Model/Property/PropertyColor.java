@@ -1,4 +1,4 @@
-package Model;
+package Model.Property;
 
 /**
  * Enum representing the different property colors in Monopoly
