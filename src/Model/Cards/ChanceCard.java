@@ -24,4 +24,9 @@ public class ChanceCard extends ChanceCardDatabase{
         Collections.shuffle(chanceDeck.getCardDeck());
     }
 
+
+    public void cardRestore() {
+        chanceDeck = new ChanceCardDatabase();
+        shuffleDeck();
+    }
 }

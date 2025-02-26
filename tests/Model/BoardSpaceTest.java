@@ -1,8 +1,11 @@
 package Model;
 
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.List;
 
 public class BoardSpaceTest {
@@ -10,7 +13,6 @@ public class BoardSpaceTest {
     private Token testToken;
     private Board board;
 
-    // Concrete implementation of BoardSpace for testing
     private class TestBoardSpace extends BoardSpace {
         public TestBoardSpace(String name, int position) {
             super(name, position);
@@ -18,20 +20,18 @@ public class BoardSpaceTest {
 
         @Override
         public void onLanding(Player player) {
-            // Test implementation
         }
 
         @Override
         public void onPassing(Player player) {
-            // Test implementation
         }
     }
 
-    @Before
+    @BeforeAll
     public void setUp() {
         board = new Board();
         testSpace = new TestBoardSpace("Test Space", 5);
-        testToken = new Token("Car");  // Give it a type string
+        testToken = new Token("Car");
     }
 
     @Test
@@ -59,13 +59,13 @@ public class BoardSpaceTest {
     public void testGetTokensReturnsNewList() {
         testSpace.addToken(testToken);
         List<Token> tokens = testSpace.getTokens();
-        tokens.clear(); // Modifying the returned list
-        assertEquals(1, testSpace.getTokens().size()); // Original list should be unchanged
+        tokens.clear();
+        assertEquals(1, testSpace.getTokens().size());
     }
 
     @Test
     public void testMultipleTokens() {
-        Token token2 = new Token("Dog");  // Give it a type string
+        Token token2 = new Token("Dog");
         testSpace.addToken(testToken);
         testSpace.addToken(token2);
         assertEquals(2, testSpace.getTokens().size());

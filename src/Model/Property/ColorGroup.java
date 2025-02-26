@@ -45,7 +45,6 @@ public class ColorGroup {
             return false;
         }
         
-        // Check if player owns all properties and none are mortgaged
         for (Property property : properties) {
             if (property.getOwner() != player) {
                 return false;
@@ -65,15 +64,12 @@ public class ColorGroup {
             return false;
         }
 
-        // Get the current number of houses on the property
         int currentHouses = property.getNumHouses();
         
-        // Check if this would violate the even building rule
         for (Property p : properties) {
             if (p.hasHotel()) {
-                return false;  // Can't add houses if any property has a hotel
+                return false;
             }
-            // No property in the group can have more than one more house
             if (currentHouses + 1 > p.getNumHouses() + 1) {
                 return false;
             }
@@ -92,7 +88,6 @@ public class ColorGroup {
             return false;
         }
 
-        // Check if all properties have 4 houses
         for (Property p : properties) {
             if (p.hasHotel() || p.getNumHouses() != 4) {
                 return false;
@@ -107,7 +102,7 @@ public class ColorGroup {
      * @return The minimum number of houses
      */
     public int getMinHouses() {
-        int min = 5;  // More than maximum possible
+        int min = 5;
         for (Property property : properties) {
             if (!property.hasHotel()) {
                 min = Math.min(min, property.getNumHouses());
@@ -143,13 +138,12 @@ public class ColorGroup {
         return true;
     }
 
-    // Getters
     public String getColor() {
         return color;
     }
 
     public List<Property> getProperties() {
-        return new ArrayList<>(properties);  // Return copy to preserve encapsulation
+        return new ArrayList<>(properties);
     }
 
     public int getPropertiesInGroup() {

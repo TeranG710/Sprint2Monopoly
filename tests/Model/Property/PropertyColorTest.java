@@ -1,9 +1,9 @@
 package Model.Property;
 
 import Model.Player;
-
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PropertyColorTest {
     
@@ -17,9 +17,8 @@ public class PropertyColorTest {
     @Test
     public void testEnumValues() {
         PropertyColor[] colors = PropertyColor.values();
-        assertEquals(8, colors.length); // Verify we have all 8 colors
+        assertEquals(8, colors.length);
         
-        // Verify specific colors exist
         assertTrue(contains(colors, PropertyColor.BROWN));
         assertTrue(contains(colors, PropertyColor.LIGHT_BLUE));
         assertTrue(contains(colors, PropertyColor.PINK));

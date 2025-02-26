@@ -22,4 +22,9 @@ public class CommunityChestCard extends CommunityChestDatabase{
     public void shuffleDeck(){
         Collections.shuffle(communityChestDeck.getCardDeck());
     }
+
+    public void cardRestore(){
+        communityChestDeck = new CommunityChestDatabase();
+        shuffleDeck();
+    }
 }

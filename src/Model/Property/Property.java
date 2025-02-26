@@ -50,18 +50,14 @@ public class Property extends BoardSpace {
     @Override
     public void onLanding(Player player) {
         if (owner == null) {
-            // Player can choose to buy property
             offerPurchase(player);
         } else if (owner != player && !isMortgaged) {
-            // Player must pay rent
             collectRent(player);
         }
-        // If mortgaged or player owns the property, nothing happens
     }
 
     @Override
     public void onPassing(Player player) {
-        // Nothing happens when passing over a property
     }
 
     /**
@@ -69,8 +65,7 @@ public class Property extends BoardSpace {
      * @param player The player who has the option to buy
      */
     private void offerPurchase(Player player) {
-        // In a real implementation, this would interact with the UI
-        // For now, we'll just provide the method signature
+
     }
 
     /**
@@ -136,11 +131,9 @@ public class Property extends BoardSpace {
      * Checks if a house can be added based on game rules
      */
     private boolean canAddHouse() {
-        // Check if owner has monopoly
         if (!colorGroup.hasMonopoly(owner)) {
             return false;
         }
-        // Check if building is even across color group
         return colorGroup.canAddHouse(this);
     }
 
@@ -148,7 +141,6 @@ public class Property extends BoardSpace {
      * Checks if a hotel can be added based on game rules
      */
     private boolean canAddHotel() {
-        // Similar to canAddHouse, but for hotels
         return colorGroup.canAddHotel(this);
     }
 
@@ -181,7 +173,6 @@ public class Property extends BoardSpace {
         return false;
     }
 
-    // Getters and setters
     public Player getOwner() {
         return owner;
     }

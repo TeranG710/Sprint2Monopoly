@@ -1,4 +1,4 @@
-import package Model;
+
 package Model.Property;
 
 import Model.Board;
@@ -6,11 +6,11 @@ import Model.Player;
 import Model.Property.ColorGroup;
 import Model.Property.Property;
 import Model.Property.PropertyColor;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
 import java.util.List;
 
 public class ColorGroupTest {
@@ -20,13 +20,12 @@ public class ColorGroupTest {
     private Player owner;
     private Board board;
 
-    @Before
+    @BeforeEach
     public void setUp() {
-        board = new Board();  // Create actual board instance
+        board = new Board();
         colorGroup = new ColorGroup("DARK_BLUE", 2);
         owner = new Player("TestOwner", board);
 
-        // Create test properties
         boardwalk = new Property(
             "Boardwalk",
             39,
@@ -91,7 +90,7 @@ public class ColorGroupTest {
             colorGroup
         );
         colorGroup.addProperty(extraProperty);
-        assertEquals(2, colorGroup.getProperties().size()); // Should still be 2
+        assertEquals(2, colorGroup.getProperties().size());
     }
 
     @Test
@@ -99,6 +98,6 @@ public class ColorGroupTest {
         colorGroup.addProperty(boardwalk);
         List<Property> properties = colorGroup.getProperties();
         properties.clear(); // Modifying the returned list
-        assertEquals(1, colorGroup.getProperties().size()); // Original should be unchanged
+        assertEquals(1, colorGroup.getProperties().size());
     }
 }

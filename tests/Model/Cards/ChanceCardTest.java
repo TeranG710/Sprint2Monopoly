@@ -20,4 +20,13 @@ class ChanceCardTest {
         assertNotNull(chanceCard);
     }
 
+    @Test
+    void cardRestore(){
+        ChanceCard chanceCard = new ChanceCard();
+        chanceCard.shuffleDeck();
+        chanceCard.drawCard();
+        chanceCard.cardRestore();
+        assertNotNull(chanceCard);
+    }
+
 }

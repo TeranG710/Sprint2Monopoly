@@ -20,4 +20,13 @@ class CommunityChestCardTest {
         assertNotNull(communityChestCard);
     }
 
+    @Test
+    void cardRestore(){
+        CommunityChestCard communityChestCard = new CommunityChestCard();
+        communityChestCard.shuffleDeck();
+        communityChestCard.drawCard();
+        communityChestCard.cardRestore();
+        assertNotNull(communityChestCard);
+    }
+
 }

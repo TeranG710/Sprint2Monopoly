@@ -1,8 +1,15 @@
-package Model;
+package Model.Property;
 
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import Model.Board;
+import Model.Player;
+import Model.Property.ColorGroup;
+import Model.Property.Property;
+import Model.Property.PropertyColor;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PropertyTest {
     private Property property;
@@ -11,9 +18,9 @@ public class PropertyTest {
     private Player otherPlayer;
     private Board board;
 
-    @Before
+    @BeforeEach
     public void setUp() {
-        board = new Board();  // Create actual board instance
+        board = new Board();
         owner = new Player("TestOwner", board);
         otherPlayer = new Player("TestPlayer", board);
 
@@ -46,7 +53,7 @@ public class PropertyTest {
     @Test
     public void testRentCalculationNoHouses() {
         property.setOwner(owner);
-        assertEquals(50, property.calculateRent()); // Base rent
+        assertEquals(50, property.calculateRent());
     }
 
     @Test
@@ -54,14 +61,14 @@ public class PropertyTest {
         property.setOwner(owner);
         assertTrue(property.mortgage());
         assertTrue(property.isMortgaged());
-        assertEquals(0, property.calculateRent()); // No rent while mortgaged
+        assertEquals(0, property.calculateRent());
     }
 
     @Test
     public void testOnLandingNoOwner() {
         int initialMoney = otherPlayer.getMoney();
         property.onLanding(otherPlayer);
-        assertEquals(initialMoney, otherPlayer.getMoney()); // Money shouldn't change if no owner
+        assertEquals(initialMoney, otherPlayer.getMoney());
     }
 
     @Test
@@ -70,7 +77,7 @@ public class PropertyTest {
         int initialOtherPlayerMoney = otherPlayer.getMoney();
         int initialOwnerMoney = owner.getMoney();
         property.onLanding(otherPlayer);
-        assertTrue(otherPlayer.getMoney() < initialOtherPlayerMoney); // Player paid rent
-        assertTrue(owner.getMoney() > initialOwnerMoney); // Owner received rent
+        assertTrue(otherPlayer.getMoney() < initialOtherPlayerMoney);
+        assertTrue(owner.getMoney() > initialOwnerMoney);
     }
 }
