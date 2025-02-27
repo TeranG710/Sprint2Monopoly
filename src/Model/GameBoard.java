@@ -1,6 +1,7 @@
 package Model;
 
 public class GameBoard {
+    
     private static final int NUM_SPACES = 40;
     private Element[] boardElements;
 

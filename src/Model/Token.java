@@ -4,13 +4,13 @@ package Model;
  * Represents a player's token on the Monopoly board
  */
 public class Token {
-    private String type;  // e.g., "Car", "Dog", "Ship"
-    private int position; // Current position on board (0-39)
+    private String type;
+    private int position;
     private Player owner;
 
     public Token(String type) {
         this.type = type;
-        this.position = 0; // Start at GO
+        this.position = 0;
     }
 
     public void setOwner(Player player) {
