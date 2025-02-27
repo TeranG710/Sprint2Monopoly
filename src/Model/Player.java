@@ -3,14 +3,14 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 import Model.Property.Property;  // Update import to match package
-import Model.Property.ColorGroup;  // Update import to match package
+
 
 /**
  * Represents a player in Monopoly game
  */
 public class Player {
-    private String name;
-    private Board board;
+    private final String name;
+    private final Board board;
     private int money;
 
     private boolean inJail;
@@ -94,15 +94,13 @@ public class Player {
 
     /**
      * Remove money from player's balance
+     *
      * @param amount Amount to remove
-     * @return true if transaction was successful
      */
-    public boolean decreaseMoney(int amount) {
+    public void decreaseMoney(int amount) {
         if (canAfford(amount)) {
             money -= amount;
-            return true;
         }
-        return false;
     }
 
     /**

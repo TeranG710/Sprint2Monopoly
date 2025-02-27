@@ -4,7 +4,7 @@ package Model;
  * Represents a player's token on the Monopoly board
  */
 public class Token {
-    private String type;  // e.g., "Car", "Dog", "Ship"
+    private final String type;  // e.g., "Car", "Dog", "Ship"
     private int position; // Current position on board (0-39)
     private Player owner;
 
