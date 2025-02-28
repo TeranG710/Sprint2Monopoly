@@ -2,6 +2,9 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import Model.Board.Board;
+import Model.Board.Token;
 import Model.Property.Property;  // Update import to match package
 
 

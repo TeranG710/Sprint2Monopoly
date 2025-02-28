@@ -1,11 +1,7 @@
 package Model.Property;
 
-import Model.Board;
+import Model.Board.Board;
 import Model.Player;
-import Model.Property.ColorGroup;
-import Model.Property.Property;
-import Model.Property.PropertyColor;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

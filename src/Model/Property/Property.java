@@ -1,5 +1,5 @@
 package Model.Property;
-import Model.BoardSpace;
+import Model.Board.BoardSpace;
 import Model.Player;
 /**
  * Represents a property space on the Monopoly board.

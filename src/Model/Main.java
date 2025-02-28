@@ -1,5 +1,10 @@
 package Model;
 
+import Model.Board.Board;
+import Model.Board.Dice;
+import Model.Board.Token;
+import Model.Board.TurnManager;
+
 import java.util.Arrays;
 import java.util.List;
 

@@ -1,4 +1,6 @@
-package Model;
+package Model.Board;
+
+import Model.Player;
 
 /**
  * Represents a player's token on the Monopoly board

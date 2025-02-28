@@ -1,5 +1,6 @@
-package Model;
+package Model.BoardTests;
 
+import Model.Board.GameBoard;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

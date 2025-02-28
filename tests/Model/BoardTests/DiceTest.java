@@ -1,7 +1,8 @@
-package Model;
+package Model.BoardTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import Model.Board.Dice;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

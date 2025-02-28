@@ -1,7 +1,10 @@
-package Model;
+package Model.BoardTests;
 
 
-import org.junit.jupiter.api.BeforeAll;
+import Model.Board.Board;
+import BoardSpace;
+import Model.Player;
+import Model.Board.Token;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

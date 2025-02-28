@@ -1,4 +1,6 @@
-package Model;
+package Model.Board;
+
+import Model.Player;
 
 import java.util.ArrayList;
 import java.util.List;
