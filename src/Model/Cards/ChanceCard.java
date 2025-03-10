@@ -7,7 +7,6 @@ public class ChanceCard extends ChanceCardDatabase{
     ChanceCardDatabase chanceDeck;
 
     public ChanceCard(){
-
         chanceDeck = new ChanceCardDatabase();
         shuffleDeck();
     }
@@ -15,6 +14,7 @@ public class ChanceCard extends ChanceCardDatabase{
     /**
      * This method draws a card from the chance deck. Checks if card deck is empty first.
      * @return String
+     * Team member(s) responsible: Jamell
      */
     public String drawCard(){
         if(!chanceDeck.getCardDeck().isEmpty()){
@@ -26,6 +26,7 @@ public class ChanceCard extends ChanceCardDatabase{
 
     /**
      * This method shuffles the chance deck.
+     * Team member(s) responsible: Jamell
      */
     public void shuffleDeck(){
         Collections.shuffle(chanceDeck.getCardDeck());
@@ -33,6 +34,7 @@ public class ChanceCard extends ChanceCardDatabase{
 
     /**
      * This method restores the chance deck to its original state.
+     * Team member(s) responsible: Jamell
      */
     public void cardRestore() {
         chanceDeck = new ChanceCardDatabase();

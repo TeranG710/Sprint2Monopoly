@@ -14,6 +14,7 @@ public class ChanceCardDatabase extends Card {
 
     /**
      * @return the type of the card
+     * Team member(s) responsible: Jamell
      */
     @Override
     public CardType getCardType() {
@@ -23,6 +24,7 @@ public class ChanceCardDatabase extends Card {
 
     /**
      * @return the deck of the cards
+     * Team member(s) responsible: Jamell
      */
     @Override
     public ArrayList<String> getCardDeck() {
@@ -31,6 +33,7 @@ public class ChanceCardDatabase extends Card {
 
     /**
      * Preload the cards in the deck
+     * Team member(s) responsible: Jamell
      */
     private void preloadCards() {
         chanceCardsDeck.add("Advance to Boardwalk.");

@@ -30,6 +30,7 @@ public class Property extends BoardSpace {
      * @param mortgageValue Mortgage value
      * @param color Color of the property
      * @param colorGroup Color group this property belongs to
+     * Team member(s) responsible: Matt
      */
     public Property(String name, int position, int purchasePrice, int baseRent, 
                     int[] houseRents, int hotelRent, int mortgageValue, 
@@ -47,6 +48,10 @@ public class Property extends BoardSpace {
         this.hasHotel = false;
     }
 
+    /**
+     * Called when a player lands on this space
+     * Team member(s) responsible: Matt
+     * */
     @Override
     public void onLanding(Player player) {
         if (owner == null) {
@@ -56,6 +61,10 @@ public class Property extends BoardSpace {
         }
     }
 
+    /**
+     * Called when a player passes this space
+     * Team member(s) responsible: Matt
+     * */
     @Override
     public void onPassing(Player player) {
     }
@@ -63,6 +72,7 @@ public class Property extends BoardSpace {
     /**
      * Offers the property for purchase to the given player
      * @param player The player who has the option to buy
+     * Team member(s) responsible: Matt
      */
     private void offerPurchase(Player player) {
 
@@ -71,6 +81,7 @@ public class Property extends BoardSpace {
     /**
      * Calculates and collects rent from the player
      * @param player The player who must pay rent
+     * Team member(s) responsible: Matt
      */
     private void collectRent(Player player) {
         int rentAmount = calculateRent();
@@ -81,6 +92,7 @@ public class Property extends BoardSpace {
     /**
      * Calculates the current rent based on houses/hotels and color group ownership
      * @return The rent amount
+     * Team member(s) responsible: Matt
      */
     public int calculateRent() {
         if (isMortgaged) {
@@ -105,6 +117,7 @@ public class Property extends BoardSpace {
     /**
      * Adds a house to the property
      * @return true if house was successfully added
+     * Team member(s) responsible: Matt
      */
     public boolean addHouse() {
         if (numHouses < 4 && !hasHotel && canAddHouse()) {
@@ -117,6 +130,7 @@ public class Property extends BoardSpace {
     /**
      * Upgrades the property to a hotel
      * @return true if hotel was successfully added
+     * Team member(s) responsible: Matt
      */
     public boolean addHotel() {
         if (numHouses == 4 && !hasHotel && canAddHotel()) {
@@ -129,6 +143,7 @@ public class Property extends BoardSpace {
 
     /**
      * Checks if a house can be added based on game rules
+     * Team member(s) responsible: Matt
      */
     private boolean canAddHouse() {
         if (!colorGroup.hasMonopoly(owner)) {
@@ -139,6 +154,7 @@ public class Property extends BoardSpace {
 
     /**
      * Checks if a hotel can be added based on game rules
+     * Team member(s) responsible: Matt
      */
     private boolean canAddHotel() {
         return colorGroup.canAddHotel(this);
@@ -147,6 +163,7 @@ public class Property extends BoardSpace {
     /**
      * Mortgages the property
      * @return true if property was successfully mortgaged
+     * Team member(s) responsible: Matt
      */
     public boolean mortgage() {
         if (!isMortgaged && numHouses == 0 && !hasHotel) {
@@ -160,6 +177,7 @@ public class Property extends BoardSpace {
     /**
      * Unmortgages the property
      * @return true if property was successfully unmortgaged
+     * Team member(s) responsible: Matt
      */
     public boolean unmortgage() {
         if (isMortgaged) {
@@ -175,6 +193,7 @@ public class Property extends BoardSpace {
 
     /**
      * returns the owner of the property
+     * Team member(s) responsible: Matt
      * */
     public Player getOwner() {
         return owner;
@@ -182,6 +201,7 @@ public class Property extends BoardSpace {
 
     /**
      * sets the owner of the property
+     * Team member(s) responsible: Matt
      * */
     public void setOwner(Player owner) {
         this.owner = owner;
@@ -189,6 +209,7 @@ public class Property extends BoardSpace {
 
     /**
      * returns the mortgage value of the property
+     * Team member(s) responsible: Matt
      * */
     public boolean isMortgaged() {
         return isMortgaged;
@@ -196,6 +217,7 @@ public class Property extends BoardSpace {
 
     /**
      * returns the number of houses on the property
+     * Team member(s) responsible: Matt
      * */
     public int getNumHouses() {
         return numHouses;
@@ -203,6 +225,7 @@ public class Property extends BoardSpace {
 
     /**
      * returns if the property has a hotel
+     * Team member(s) responsible: Matt
      * */
     public boolean hasHotel() {
         return hasHotel;
@@ -210,6 +233,7 @@ public class Property extends BoardSpace {
 
     /**
      * returns the purchase price of the property
+     * Team member(s) responsible: Matt
      * */
     public int getPurchasePrice() {
         return purchasePrice;
@@ -217,6 +241,7 @@ public class Property extends BoardSpace {
 
     /**
      * returns the mortgage value of the property
+     * Team member(s) responsible: Matt
      * */
     public ColorGroup getColorGroup() {
         return colorGroup;
@@ -224,6 +249,7 @@ public class Property extends BoardSpace {
 
     /**
      * returns the color of the property
+     * Team member(s) responsible: Matt
      * */
     public PropertyColor getColor() {
         return color;

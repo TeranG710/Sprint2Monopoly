@@ -15,6 +15,7 @@ public class CommunityChestDatabase extends Card
     /**
      * This method returns the card type
      * @return CardType
+     * Team member(s) responsible: Jamell
      */
     @Override
     public CardType getCardType() {
@@ -24,6 +25,7 @@ public class CommunityChestDatabase extends Card
     /**
      * This method returns the card deck
      * @return ArrayList<String>
+     * Team member(s) responsible: Jamell
      */
     @Override
     public ArrayList<String> getCardDeck() {
@@ -32,6 +34,7 @@ public class CommunityChestDatabase extends Card
 
     /**
      * This method preloads the cards
+     * Team member(s) responsible: Jamell
      */
     private void preloadCards() {
         communityChanceDeck.add("Advance to Go (Collect $200)");

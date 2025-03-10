@@ -17,6 +17,7 @@ public class TurnManager {
      * Initializes the turn manager with a list of players.
      * The turn order is randomized.
      * @param players List of players in the game.
+     * Team Member(s) responsible: Giovanny
      */
     public TurnManager(List<Player> players) {
         if (players.size() < 2 || players.size() > 4) {
@@ -30,6 +31,7 @@ public class TurnManager {
     /**
      * Gets the current player whose turn it is.
      * @return The current player.
+     * Team Member(s) responsible: Giovanny
      */
     public Player getCurrentPlayer() {
         return players.get(currentPlayerIndex);
@@ -37,6 +39,7 @@ public class TurnManager {
 
     /**
      * Moves to the next player's turn.
+     * Team Member(s) responsible: Giovanny
      */
     public void nextTurn() {
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
@@ -45,6 +48,7 @@ public class TurnManager {
     /**
      * Gets the list of players in their randomized turn order.
      * @return List of players.
+     * Team Member(s) responsible: Giovanny
      */
     public List<Player> getTurnOrder() {
         return new ArrayList<>(players);

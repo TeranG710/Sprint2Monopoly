@@ -12,6 +12,7 @@ public class GameBoard {
 
     /**
      * returns the board elements
+     * Team member(s) responsible: Deborah
      * */
     public Element[] getBoardElements() {
         return boardElements;
@@ -19,6 +20,7 @@ public class GameBoard {
 
     /**
      * initializes the board elements with the names of the spaces
+     * Team member(s) responsible: Deborah
      * */
     private void initializeBoard() {
         boardElements[0] = new Element("GO", 0);

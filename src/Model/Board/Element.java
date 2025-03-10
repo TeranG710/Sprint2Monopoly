@@ -11,6 +11,7 @@ public class Element {
 
     /**
      * Returns name of the element
+     * Team member(s) responsible: Deborah
      * */
     public String getName() {
         return name;
@@ -18,6 +19,7 @@ public class Element {
 
     /**
      * Returns position of the element
+     * Team member(s) responsible: Deborah
      * */
     public int getPosition() {
         return position;
