@@ -11,6 +11,7 @@ This project is a adaptation of the classic Monopoly board game, developed as a 
 Before running the project, ensure you have the following installed:
 - Java Development Kit (JDK) 11 or later
 - Git (optional, for cloning the repository)
+- An ide with java support such as: Intellij Idea, Vscode 
 
 ### Steps to Install
 1. **Clone the Repository:**
@@ -19,7 +20,7 @@ Before running the project, ensure you have the following installed:
    cd MonopolyProject
    ```
 2. **Build the Project:**
-   - Open the project in your preferred IDE (e.g., IntelliJ IDEA, Eclipse, VS Code with Java support).
+   - Open the project in your preferred IDE (e.g., IntelliJ IDEA, VS Code with Java support).
    - Ensure all dependencies are resolved.
    - Compile the project.
 
