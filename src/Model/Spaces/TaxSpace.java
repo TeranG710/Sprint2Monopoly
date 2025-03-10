@@ -32,6 +32,11 @@ public class TaxSpace extends BoardSpace {
         return percentageTax;
     }
 
+    /**
+     * Do nothing when a player passes over the space
+     * @param player The player who passed over the space
+     * Team member(s) responsible: Deborah
+     */
     @Override
     public void onPassing(Player player) {
         // Do nothing

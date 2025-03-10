@@ -3,7 +3,7 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
-import Model.Board.Board;
+import Model.Board.GameBoard;
 import Model.Board.Token;
 import Model.Property.Property;  // Update import to match package
 
@@ -13,7 +13,7 @@ import Model.Property.Property;  // Update import to match package
  */
 public class Player {
     private final String name;
-    private final Board board;
+    private final GameBoard board;
     private int money;
 
     private boolean inJail;
@@ -36,7 +36,7 @@ public class Player {
      * @param board Game board
      * Team member(s) responsible: Matt
      */
-    public Player(String name, Board board) {
+    public Player(String name, GameBoard board) {
         this.name = name;
         this.board = board;
         this.money = 1500; // Starting money in Monopoly
@@ -166,7 +166,7 @@ public class Player {
      * @return The game board
      * Team member(s) responsible: Matt
      */
-    public Board getBoard() {
+    public GameBoard getBoard() {
         return board;
     }
 

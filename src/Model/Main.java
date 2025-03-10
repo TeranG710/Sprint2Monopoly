@@ -1,7 +1,7 @@
 package Model;
 
-import Model.Board.Board;
 import Model.Board.Dice;
+import Model.Board.GameBoard;
 import Model.Board.Token;
 import Model.Board.TurnManager;
 
@@ -17,7 +17,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        Board board = new Board(); // Assuming you have a Board class
+        GameBoard board = new GameBoard(); // Assuming you have a Board class
         Dice dice = new Dice();
 
         // Create players

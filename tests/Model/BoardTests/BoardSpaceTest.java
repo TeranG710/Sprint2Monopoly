@@ -1,7 +1,6 @@
 package Model.BoardTests;
 
 
-import Model.Board.Board;
 import Model.Spaces.BoardSpace;
 import Model.Player;
 import Model.Board.Token;

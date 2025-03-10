@@ -6,11 +6,14 @@ import Model.Property.Property;
 import Model.Property.PropertyColor;
 import Model.Spaces.*;
 
-
+/**
+ * Represents the game board in Monopoly. Contains all the spaces on the board and initializes them.
+ */
 public class GameBoard {
     
     private static final int NUM_SPACES = 40;
     private final BoardSpace[] boardElements;
+    private Dice dice;
     private ColorGroup brownGroup;
     private ColorGroup lightBlueGroup;
     private ColorGroup pinkGroup;
@@ -20,19 +23,38 @@ public class GameBoard {
     private ColorGroup greenGroup;
     private ColorGroup blueGroup;
 
+    /**
+     * Initializes the game board with all the spaces.
+     * Team member(s) responsible: Deborah
+     */
     public GameBoard() {
         this.boardElements = new BoardSpace[NUM_SPACES];
+        this.dice = new Dice();
         initializeColorGroups();
         initializeBoard();
     }
 
     /**
      * returns the board elements
-     * Team member(s) responsible: Deborah
+     * Team member(s) responsible: Giovanny
      * */
     public BoardSpace[] getBoardElements() {
         return boardElements;
     }
+
+    /**
+     * Gets the dice object
+     * @return dice
+     * Team member(s) responsible: Deborah
+     */
+    public Dice getDice() {
+        return dice;
+    }
+
+    /**
+     * Initializes the color groups for the properties
+     * Team member(s) responsible: Deborah
+     */
     public void initializeColorGroups() {
         brownGroup = new ColorGroup(PropertyColor.BROWN, 2);
         lightBlueGroup = new ColorGroup(PropertyColor.LIGHT_BLUE, 3);
