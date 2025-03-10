@@ -1,5 +1,6 @@
-package Model.Board;
+package Model.Spaces;
 
+import Model.Board.Token;
 import Model.Player;
 
 import java.util.ArrayList;

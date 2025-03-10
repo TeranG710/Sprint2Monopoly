@@ -4,6 +4,7 @@ import Model.Cards.CommunityChestCard;
 import Model.Property.ColorGroup;
 import Model.Property.Property;
 import Model.Property.PropertyColor;
+import Model.Spaces.*;
 
 
 public class GameBoard {
@@ -52,7 +53,7 @@ public class GameBoard {
         boardElements[1] = new Property("Mediterranean Avenue", 1, 60, 2, new int[]{10,30,90,160}, 250, 30, PropertyColor.BROWN, brownGroup);
         boardElements[2] = new CommunityChestSpace(2, new CommunityChestCard());
         boardElements[3] = new Property("Baltic Avenue", 3, 60, 4, new int[]{20,60,180,320}, 450, 30, PropertyColor.BROWN, brownGroup);
-        boardElements[4] = new Element("Income Tax", 4);
+        boardElements[4] = new TaxSpace(4);
         boardElements[5] = new Railroad("Reading Railroad", 5);
         boardElements[6] = new Property("Oriental Avenue", 6, 100, 6, new int[]{30,90,270,400}, 550, 50, PropertyColor.LIGHT_BLUE, lightBlueGroup);
         boardElements[7] = new ChanceSpace( 7, new ChanceCard());

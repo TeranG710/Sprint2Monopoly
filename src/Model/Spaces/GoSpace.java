@@ -1,6 +1,7 @@
-package Model.Board;
+package Model.Spaces;
 
 import Model.Player;
+import Model.Spaces.BoardSpace;
 
 public class GoSpace extends BoardSpace {
     private static final int GO_MONEY = 200;

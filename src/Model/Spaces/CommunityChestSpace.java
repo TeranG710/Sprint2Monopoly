@@ -1,7 +1,8 @@
-package Model.Board;
+package Model.Spaces;
 
 import Model.Cards.CommunityChestCard;
 import Model.Player;
+import Model.Spaces.BoardSpace;
 
 public class CommunityChestSpace extends BoardSpace {
     private CommunityChestCard communityChestDeck;

@@ -1,7 +1,8 @@
-package Model.Board;
+package Model.Spaces;
 
-import Model.Property.PropertyColor;
 import Model.Player;
+import Model.Spaces.BoardSpace;
+
 public class Railroad extends BoardSpace {
     private static final int PURCHASE_PRICE = 200;
     private static final int BASE_RENT = 25;
