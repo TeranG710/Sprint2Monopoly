@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Main class to run the game
  * This class is responsible for creating the game board, players, and running the game loop.
- * Team Member(s) responsible: Jamell, Giovanny
+ * Team Member(s) responsible: Giovanny
  */
 public class Main {
     public static void main(String[] args) {

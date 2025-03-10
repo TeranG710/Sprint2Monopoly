@@ -15,7 +15,7 @@ class GameBoardTest {
             assertEquals(40, gameBoard.getBoardElements().length, "The board should have exactly 40 spaces.");
 
             // Check specific board positions
-            assertEquals("GO", gameBoard.getBoardElements()[0].getName());
+            assertEquals("Go", gameBoard.getBoardElements()[0].getName());
 
             assertEquals("Boardwalk", gameBoard.getBoardElements()[39].getName());
 

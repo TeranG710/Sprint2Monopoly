@@ -177,10 +177,12 @@ public class Player {
      */
     public int getNumRailroads() {
         // Needs implementation
+        return 0;
     }
 
     public int getNumUtilities() {
         // Needs implementation
+        return 0;
     }
 
     public void goToJail() {

@@ -2,6 +2,7 @@
 package Model.Property;
 
 import Model.Player;
+import Model.Spaces.BoardSpace;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,13 +15,13 @@ public class ColorGroupTest {
     private Property boardwalk;
     private Property parkPlace;
     private Player owner;
-    private Board board;
+
 
     @BeforeEach
     public void setUp() {
-        board = new Board();
-        colorGroup = new ColorGroup("DARK_BLUE", 2);
-        owner = new Player("TestOwner", board);
+
+        colorGroup = new ColorGroup(PropertyColor.DARK_BLUE, 2);
+        owner = new Player("TestOwner", null);
 
         boardwalk = new Property(
             "Boardwalk",
@@ -49,7 +50,7 @@ public class ColorGroupTest {
 
     @Test
     public void testConstructor() {
-        assertEquals("DARK_BLUE", colorGroup.getColor());
+        assertEquals(PropertyColor.DARK_BLUE, colorGroup.getColor());
         assertEquals(2, colorGroup.getPropertiesInGroup());
         assertTrue(colorGroup.getProperties().isEmpty());
     }

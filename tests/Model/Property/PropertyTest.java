@@ -1,5 +1,6 @@
 package Model.Property;
 
+import Model.Board.GameBoard;
 import Model.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,15 +12,15 @@ public class PropertyTest {
     private ColorGroup colorGroup;
     private Player owner;
     private Player otherPlayer;
-    private Board board;
+
 
     @BeforeEach
     public void setUp() {
-        board = new Board();
+        GameBoard board = new GameBoard();
         owner = new Player("TestOwner", board);
         otherPlayer = new Player("TestPlayer", board);
 
-        colorGroup = new ColorGroup("DARK_BLUE", 2);
+        colorGroup = new ColorGroup(PropertyColor.DARK_BLUE, 2);
         property = new Property(
             "Boardwalk",
             39,
