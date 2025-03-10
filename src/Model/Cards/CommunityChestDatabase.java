@@ -12,16 +12,27 @@ public class CommunityChestDatabase extends Card
         preloadCards();
     }
 
+    /**
+     * This method returns the card type
+     * @return CardType
+     */
     @Override
     public CardType getCardType() {
         return CardType.Community_Chest;
     }
 
+    /**
+     * This method returns the card deck
+     * @return ArrayList<String>
+     */
     @Override
     public ArrayList<String> getCardDeck() {
         return communityChanceDeck;
     }
 
+    /**
+     * This method preloads the cards
+     */
     private void preloadCards() {
         communityChanceDeck.add("Advance to Go (Collect $200)");
         communityChanceDeck.add("Bank error in your favor. Collect $200");

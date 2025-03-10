@@ -2,7 +2,7 @@ package Model.BoardTests;
 
 
 import Model.Board.Board;
-import BoardSpace;
+import Model.Board.BoardSpace;
 import Model.Player;
 import Model.Board.Token;
 import org.junit.jupiter.api.BeforeEach;

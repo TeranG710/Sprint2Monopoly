@@ -12,17 +12,26 @@ public class ChanceCardDatabase extends Card {
         preloadCards();
     }
 
+    /**
+     * @return the type of the card
+     */
     @Override
     public CardType getCardType() {
         return CardType.Chance;
     }
 
 
+    /**
+     * @return the deck of the cards
+     */
     @Override
     public ArrayList<String> getCardDeck() {
         return chanceCardsDeck;
     }
 
+    /**
+     * Preload the cards in the deck
+     */
     private void preloadCards() {
         chanceCardsDeck.add("Advance to Boardwalk.");
         chanceCardsDeck.add("Advance to Go (Collect $200).");

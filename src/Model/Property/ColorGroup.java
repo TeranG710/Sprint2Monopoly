@@ -138,14 +138,26 @@ public class ColorGroup {
         return true;
     }
 
+    /**
+     * Gets the color of this group
+     * @return The color
+     */
     public String getColor() {
         return color;
     }
 
+    /**
+     * Gets the properties in this group
+     * @return List of properties
+     */
     public List<Property> getProperties() {
         return new ArrayList<>(properties);
     }
 
+    /**
+     * Gets the number of properties in this group
+     * @return Number of properties
+     */
     public int getPropertiesInGroup() {
         return propertiesInGroup;
     }

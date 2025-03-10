@@ -10,10 +10,16 @@ public class GameBoard {
         initializeBoard();
     }
 
+    /**
+     * returns the board elements
+     * */
     public Element[] getBoardElements() {
         return boardElements;
     }
 
+    /**
+     * initializes the board elements with the names of the spaces
+     * */
     private void initializeBoard() {
         boardElements[0] = new Element("GO", 0);
         boardElements[1] = new Element("Mediterranean Avenue", 1);

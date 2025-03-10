@@ -173,34 +173,58 @@ public class Property extends BoardSpace {
         return false;
     }
 
+    /**
+     * returns the owner of the property
+     * */
     public Player getOwner() {
         return owner;
     }
 
+    /**
+     * sets the owner of the property
+     * */
     public void setOwner(Player owner) {
         this.owner = owner;
     }
 
+    /**
+     * returns the mortgage value of the property
+     * */
     public boolean isMortgaged() {
         return isMortgaged;
     }
 
+    /**
+     * returns the number of houses on the property
+     * */
     public int getNumHouses() {
         return numHouses;
     }
 
+    /**
+     * returns if the property has a hotel
+     * */
     public boolean hasHotel() {
         return hasHotel;
     }
 
+    /**
+     * returns the purchase price of the property
+     * */
     public int getPurchasePrice() {
         return purchasePrice;
     }
 
+    /**
+     * returns the mortgage value of the property
+     * */
     public ColorGroup getColorGroup() {
         return colorGroup;
     }
 
+    /**
+     * returns the color of the property
+     * */
     public PropertyColor getColor() {
         return color;
     }

@@ -12,19 +12,28 @@ public class ChanceCard extends ChanceCardDatabase{
         shuffleDeck();
     }
 
+    /**
+     * This method draws a card from the chance deck. Checks if card deck is empty first.
+     * @return String
+     */
     public String drawCard(){
-        if(chanceDeck.getCardDeck().isEmpty()){
+        if(!chanceDeck.getCardDeck().isEmpty()){
             return chanceDeck.getCardDeck().remove(0);
         }
         return "No more cards in the deck.";
     }
 
 
+    /**
+     * This method shuffles the chance deck.
+     */
     public void shuffleDeck(){
         Collections.shuffle(chanceDeck.getCardDeck());
     }
 
-
+    /**
+     * This method restores the chance deck to its original state.
+     */
     public void cardRestore() {
         chanceDeck = new ChanceCardDatabase();
         shuffleDeck();

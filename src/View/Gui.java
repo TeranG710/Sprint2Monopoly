@@ -6,8 +6,16 @@ import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The Gui class creates the graphical user interface for the Monopoly game.
+ */
 public class Gui {
 
+    /**
+     * The main method to start the GUI application.
+     *
+     * @param args Command line arguments.
+     */
     public static void main(String[] args) {
         JFrame frame = new JFrame("Monopoly Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -20,6 +28,11 @@ public class Gui {
         frame.setVisible(true);
     }
 
+    /**
+     * Places the components on the panel.
+     *
+     * @param panel The panel to place components on.
+     */
     private static void placeComponents(JPanel panel) {
         panel.setLayout(null);
 

@@ -9,10 +9,16 @@ public class Element {
         this.position = position;
     }
 
+    /**
+     * Returns name of the element
+     * */
     public String getName() {
         return name;
     }
 
+    /**
+     * Returns position of the element
+     * */
     public int getPosition() {
         return position;
     }
