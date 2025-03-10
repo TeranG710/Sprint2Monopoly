@@ -169,4 +169,13 @@ public class Player {
     public Board getBoard() {
         return board;
     }
+
+    /**
+     * Get the number of railroads owned by the player
+     * @return
+     * Team member(s) responsible: Deborah
+     */
+    public int getNumRailroads() {
+
+    }
 }
