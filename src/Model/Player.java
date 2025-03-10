@@ -176,6 +176,14 @@ public class Player {
      * Team member(s) responsible: Deborah
      */
     public int getNumRailroads() {
+        // Needs implementation
+    }
 
+    public int getNumUtilities() {
+        // Needs implementation
+    }
+
+    public void goToJail() {
+        // Needs implementation
     }
 }

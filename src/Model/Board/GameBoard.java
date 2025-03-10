@@ -59,9 +59,9 @@ public class GameBoard {
         boardElements[7] = new ChanceSpace( 7, new ChanceCard());
         boardElements[8] = new Property("Vermont Avenue", 8, 100, 6, new int[]{30,90,270,400}, 550, 50, PropertyColor.LIGHT_BLUE, lightBlueGroup);
         boardElements[9] = new Property("Connecticut Avenue", 9, 120, 8, new int[]{40,100,300,450}, 600, 60, PropertyColor.LIGHT_BLUE, lightBlueGroup);
-        boardElements[10] = new Element("Jail / Just Visiting", 10);
+        boardElements[10] = new JustVisitingAndFreeParking("Jail / Just Visiting", 10);
         boardElements[11] = new Property("St. Charles Place", 11, 140, 10, new int[]{50,150,450,625}, 750, 70, PropertyColor.PINK, pinkGroup);
-        boardElements[12] = new Element("Electric Company", 12);
+        boardElements[12] = new UtilitySpace("Electric Company", 12);
         boardElements[13] = new Property("States Avenue", 13, 140, 10, new int[]{50,150,450,625}, 750, 70, PropertyColor.PINK, pinkGroup);
         boardElements[14] = new Property("Virginia Avenue", 14, 160, 12, new int[]{60,180,500,700}, 900, 80, PropertyColor.PINK, pinkGroup);
         boardElements[15] = new Railroad("Pennsylvania Railroad", 15);
@@ -69,7 +69,7 @@ public class GameBoard {
         boardElements[17] = new CommunityChestSpace(17, new CommunityChestCard());
         boardElements[18] = new Property("Tennessee Avenue", 18, 180, 14, new int[]{70,200,550,750}, 950, 90, PropertyColor.ORANGE, orangeGroup);
         boardElements[19] = new Property("New York Avenue", 19, 200, 16, new int[]{80,220,600,800}, 1000, 100, PropertyColor.ORANGE, orangeGroup);
-        boardElements[20] = new BoardSpace("Free Parking", 20);
+        boardElements[20] = new JustVisitingAndFreeParking("Free Parking", 20);
         boardElements[21] = new Property("Kentucky Avenue", 21, 220, 18, new int[]{90,250,700,875}, 1050, 110, PropertyColor.RED, redGroup);
         boardElements[22] = new ChanceSpace(22, new ChanceCard());
         boardElements[23] = new Property("Indiana Avenue", 23, 220, 18, new int[]{90,250,700,875}, 1050, 110, PropertyColor.RED, redGroup);
@@ -77,9 +77,9 @@ public class GameBoard {
         boardElements[25] = new Railroad("B. & O. Railroad", 25);
         boardElements[26] = new Property("Atlantic Avenue", 26, 260, 22, new int[]{110,330,800,975}, 1150, 130, PropertyColor.YELLOW, yellowGroup);
         boardElements[27] = new Property("Ventnor Avenue", 27, 260, 22, new int[]{110,330,800,975}, 1150, 130, PropertyColor.YELLOW, yellowGroup);
-        boardElements[28] = new Element("Water Works", 28);
+        boardElements[28] = new UtilitySpace("Water Works", 28);
         boardElements[29] = new Property("Marvin Gardens", 29, 280, 24, new int[]{120,360,850,1025}, 1200, 140, PropertyColor.YELLOW, yellowGroup);
-        boardElements[30] = new Element("Go To Jail", 30);
+        boardElements[30] = new GoToJailSpace(30);
         boardElements[31] = new Property("Pacific Avenue", 31, 300, 26, new int[]{130,390,900,1100}, 1275, 150, PropertyColor.GREEN, greenGroup);
         boardElements[32] = new Property("North Carolina Avenue", 32, 300, 26, new int[]{130,390,900,1100}, 1275, 150, PropertyColor.GREEN, greenGroup);
         boardElements[33] = new CommunityChestSpace(33, new CommunityChestCard());
