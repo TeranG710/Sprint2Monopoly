@@ -4,7 +4,6 @@ import Model.Board.Dice;
 import Model.Board.GameBoard;
 import Model.Board.Token;
 import Model.Board.TurnManager;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,12 +11,11 @@ import java.util.List;
 /**
  * Main class to run the game
  * This class is responsible for creating the game board, players, and running the game loop.
- * Team Member(s) responsible: Jamell, Giovanny
+ * Team Member(s) responsible: Giovanny
  */
 public class Main {
     public static void main(String[] args) {
-
-        GameBoard board = new GameBoard(); // Assuming you have a Board class
+        GameBoard board = new GameBoard();
         Dice dice = new Dice();
 
         // Create players
@@ -40,33 +38,37 @@ public class Main {
         for (int i = 0; i < 8; i++) { // Simulate 8 turns
             Player currentPlayer = turnManager.getCurrentPlayer();
             Token token = currentPlayer.getToken();
+            int consecutiveDoubles = 0; // Track doubles per turn
 
             System.out.println("\nIt's " + currentPlayer.getName() + "'s turn!");
 
-            // Handle roll and double rolls
-            boolean rolledDoubles = false;
-            int totalRoll = 0;
+            boolean rolledDoubles;
             do {
                 dice.roll();
                 int rollResult = dice.getSum();
                 System.out.println(currentPlayer.getName() + " rolled a " + dice.getDie1() + " and a " + dice.getDie2() + " (Total: " + rollResult + ")");
 
-                totalRoll += rollResult;
-                token.setPosition((token.getPosition() + rollResult) % 40); // Move the player, assuming a 40-space board
-
-                System.out.println(currentPlayer.getName() + " moves to space " + token.getPosition());
-
                 rolledDoubles = dice.isDouble();
+
                 if (rolledDoubles) {
+                    consecutiveDoubles++;
                     System.out.println(currentPlayer.getName() + " rolled doubles! They get another turn.");
+                } else {
+                    consecutiveDoubles = 0; // Reset if no double
                 }
 
-            } while (rolledDoubles && !dice.goToJail()); // Continue if doubles were rolled and player has not rolled 3 doubles
+                // If rolled 3 doubles in a row, send to jail
+                if (consecutiveDoubles == 3) {
+                    currentPlayer.setInJail(true);
+                    System.out.println(currentPlayer.getName() + " has rolled 3 doubles in a row and is going to jail!");
+                    break; // End turn immediately
+                }
 
-            if (dice.goToJail()) {
-                currentPlayer.setInJail(true);
-                System.out.println(currentPlayer.getName() + " has rolled 3 doubles in a row and is going to jail!");
-            }
+                // Move player if not in jail
+                token.setPosition((token.getPosition() + rollResult) % 40);
+                System.out.println(currentPlayer.getName() + " moves to space " + token.getPosition());
+
+            } while (rolledDoubles);
 
             // Advance to the next turn
             turnManager.nextTurn();

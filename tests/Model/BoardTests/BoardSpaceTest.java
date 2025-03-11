@@ -15,7 +15,11 @@ import java.util.List;
 public class BoardSpaceTest {
     private BoardSpace testSpace;
     private Token testToken;
+<<<<<<< HEAD
     private GameBoard board;
+=======
+
+>>>>>>> c03bec4a651a95cc568c4478e108ba6b1669778e
 
     private class TestBoardSpace extends BoardSpace {
         public TestBoardSpace(String name, int position) {
@@ -33,7 +37,11 @@ public class BoardSpaceTest {
 
     @BeforeEach
     public void setUp() {
+<<<<<<< HEAD
         board = new GameBoard();
+=======
+
+>>>>>>> c03bec4a651a95cc568c4478e108ba6b1669778e
         testSpace = new TestBoardSpace("Test Space", 5);
         testToken = new Token("Car");
     }
