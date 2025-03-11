@@ -17,18 +17,11 @@ public class Player {
     private int money;
 
     private boolean inJail;
+    private int jailTurns;
     private Token token;
 
     private List<Model.Property.Property> properties = new ArrayList<>();
 
-    /**
-     * Add a property to the player's portfolio
-     * @param property Property to add
-     * Team member(s) responsible: Matt
-     */
-    public void addProperty(Model.Property.Property property) {
-        properties.add(property);
-    }
 
     /**
      * Constructor for Player
@@ -42,6 +35,16 @@ public class Player {
         this.money = 1500; // Starting money in Monopoly
         this.properties = new ArrayList<>();
         this.inJail = false;
+        this.jailTurns = 0;
+
+    }
+    /**
+     * Add a property to the player's portfolio
+     * @param property Property to add
+     * Team member(s) responsible: Matt
+     */
+    public void addProperty(Model.Property.Property property) {
+        properties.add(property);
     }
 
     /**
@@ -185,5 +188,17 @@ public class Player {
 
     public void goToJail() {
         // Needs implementation
+    }
+
+    public void incrementTurnsInJail() {
+        jailTurns++;
+    }
+
+    public int getTurnsInJail() {
+        return jailTurns;
+    }
+
+    public void resetTurnsInJail() {
+        jailTurns = 0;
     }
 }

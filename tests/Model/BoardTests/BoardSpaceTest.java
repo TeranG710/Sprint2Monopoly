@@ -1,6 +1,7 @@
 package Model.BoardTests;
 
 
+import Model.Board.GameBoard;
 import Model.Spaces.BoardSpace;
 import Model.Player;
 import Model.Board.Token;
@@ -14,7 +15,7 @@ import java.util.List;
 public class BoardSpaceTest {
     private BoardSpace testSpace;
     private Token testToken;
-    private Board board;
+    private GameBoard board;
 
     private class TestBoardSpace extends BoardSpace {
         public TestBoardSpace(String name, int position) {
@@ -32,7 +33,7 @@ public class BoardSpaceTest {
 
     @BeforeEach
     public void setUp() {
-        board = new Board();
+        board = new GameBoard();
         testSpace = new TestBoardSpace("Test Space", 5);
         testToken = new Token("Car");
     }
