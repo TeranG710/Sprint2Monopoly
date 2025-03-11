@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="045199dc-e734-43e5-b06f-0117ed3d4974" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Model/Board/PlayerMovement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Model/Board/PlayerMovementTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MonopolyProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MonopolyProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Model/BoardTests/BoardSpaceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Model/BoardTests/BoardSpaceTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="045199dc-e734-43e5-b06f-0117ed3d4974" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
