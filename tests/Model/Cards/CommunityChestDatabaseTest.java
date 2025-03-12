@@ -25,4 +25,5 @@ public class CommunityChestDatabaseTest {
         assertEquals(deckTest.getLast(), database.getCardDeck().getLast());
         assertEquals(16, database.getCardDeck().size());
     }
+
 }

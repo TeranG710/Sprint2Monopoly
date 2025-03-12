@@ -28,7 +28,7 @@ public class Player {
      *
      * @param name  Player's name
      * @param board Game board
-     *              Team member(s) responsible: Matt
+     * Team member(s) responsible: Matt
      */
     public Player(String name, GameBoard board) {
         this.name = name;
@@ -44,7 +44,7 @@ public class Player {
      * Add a property to the player's portfolio
      *
      * @param property Property to add
-     *                 Team member(s) responsible: Matt
+     * Team member(s) responsible: Matt
      */
     public void addProperty(Model.Property.Property property) {
         properties.add(property);
@@ -54,7 +54,7 @@ public class Player {
      * Remove a property from the player's portfolio
      *
      * @param property Property to remove
-     *                 Team member(s) responsible: Matt
+     * Team member(s) responsible: Matt
      */
     public void removeProperty(Property property) {
         if (properties.remove(property)) {
@@ -108,7 +108,7 @@ public class Player {
      * Remove money from player's balance
      *
      * @param amount Amount to remove
-     *               Team member(s) responsible: Matt
+     * Team member(s) responsible: Matt
      */
     public void decreaseMoney(int amount) {
         if (canAfford(amount)) {
