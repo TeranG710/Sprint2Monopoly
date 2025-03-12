@@ -17,8 +17,9 @@ public enum PropertyColor {
 
     /**
      * Constructor for PropertyColor
+     *
      * @param propertiesInGroup Number of properties in this color group
-     * Team member(s) responsible: Matt
+     *                          Team member(s) responsible: Matt
      */
     PropertyColor(int propertiesInGroup) {
         this.propertiesInGroup = propertiesInGroup;
@@ -26,6 +27,7 @@ public enum PropertyColor {
 
     /**
      * Get the number of properties in this color group
+     *
      * @return Number of properties
      * Team member(s) responsible: Matt
      */

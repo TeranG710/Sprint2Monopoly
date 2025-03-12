@@ -10,10 +10,10 @@ public class Railroad extends BoardSpace {
     private Player owner;
 
     /**
-     *  Constructor for Railroad
+     * Constructor for Railroad
+     *
      * @param name
-     * @param position
-     * Team member(s) responsible: Deborah
+     * @param position Team member(s) responsible: Deborah
      */
     public Railroad(String name, int position) {
         super(name, position);
@@ -22,8 +22,9 @@ public class Railroad extends BoardSpace {
 
     /**
      * Pay rent to the owner if the space is owned, otherwise buy the space
+     *
      * @param player The player who landed on the space
-     * Team member(s) responsible: Deborah
+     *               Team member(s) responsible: Deborah
      */
     @Override
     public void onLanding(Player player) {
@@ -40,25 +41,30 @@ public class Railroad extends BoardSpace {
 
     /**
      * Do nothing when a player passes over the space
+     *
      * @param player The player who passed over the space
-     * Team member(s) responsible: Deborah
+     *               Team member(s) responsible: Deborah
      */
     @Override
     public void onPassing(Player player) {
         // Do nothing
     }
+
     public void SetOwner(Player player) {
         owner = player;
     }
+
     public Player getOwner() {
         return owner;
     }
+
     public int getPurchasePrice() {
         return PURCHASE_PRICE;
     }
 
     /**
      * Calculate the rent based on the number of railroads owned by the owner
+     *
      * @return
      */
     private int calculateRent() {

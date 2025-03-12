@@ -18,9 +18,10 @@ public abstract class BoardSpace {
 
     /**
      * Constructor for BoardSpace
-     * @param name The name of the space
+     *
+     * @param name     The name of the space
      * @param position The position on the board (0-39)
-     * Team member(s) responsible: Matt
+     *                 Team member(s) responsible: Matt
      */
     public BoardSpace(String name, int position) {
         this.name = name;
@@ -30,8 +31,9 @@ public abstract class BoardSpace {
 
     /**
      * Add a player token to this space
+     *
      * @param token The token to add
-     * Team member(s) responsible: Matt
+     *              Team member(s) responsible: Matt
      */
     public void addToken(Token token) {
         tokens.add(token);
@@ -39,8 +41,9 @@ public abstract class BoardSpace {
 
     /**
      * Remove a player token from this space
+     *
      * @param token The token to remove
-     * Team member(s) responsible: Matt
+     *              Team member(s) responsible: Matt
      */
     public void removeToken(Token token) {
         tokens.remove(token);
@@ -48,6 +51,7 @@ public abstract class BoardSpace {
 
     /**
      * Get all tokens currently on this space
+     *
      * @return List of tokens
      * Team member(s) responsible: Matt
      */
@@ -57,6 +61,7 @@ public abstract class BoardSpace {
 
     /**
      * Get the name of the space
+     *
      * @return The space name
      * Team member(s) responsible: Matt
      */
@@ -66,6 +71,7 @@ public abstract class BoardSpace {
 
     /**
      * Get the position of the space on the board
+     *
      * @return The position (0-39)
      * Team member(s) responsible: Matt
      */
@@ -75,15 +81,17 @@ public abstract class BoardSpace {
 
     /**
      * Abstract method that defines what happens when a player lands on this space
+     *
      * @param player The player who landed on the space
-     * Team member(s) responsible: Matt
+     *               Team member(s) responsible: Matt
      */
     public abstract void onLanding(Player player);
 
     /**
      * Abstract method that defines what happens when a player passes over this space
+     *
      * @param player The player who passed over the space
-     * Team member(s) responsible: Matt
+     *               Team member(s) responsible: Matt
      */
     public abstract void onPassing(Player player);
 }

@@ -12,9 +12,9 @@ public class UtilitySpace extends BoardSpace {
 
     /**
      * Constructor for UtilitySpace
+     *
      * @param name
-     * @param position
-     * Team member(s) responsible: Deborah
+     * @param position Team member(s) responsible: Deborah
      */
     public UtilitySpace(String name, int position) {
         super(name, position);
@@ -23,8 +23,9 @@ public class UtilitySpace extends BoardSpace {
 
     /**
      * Pay rent to the owner if the space is owned, otherwise buy the space
+     *
      * @param player The player who landed on the space
-     * Team member(s) responsible: Deborah
+     *               Team member(s) responsible: Deborah
      */
     @Override
     public void onLanding(Player player) {
@@ -44,9 +45,9 @@ public class UtilitySpace extends BoardSpace {
 
     /**
      * Calculate the rent to be paid by the player
+     *
      * @param player
-     * @return
-     * Team member(s) responsible: Deborah
+     * @return Team member(s) responsible: Deborah
      */
     private int calculateRent(Player player) {
         int numOwnedByOwner = owner.getNumUtilities();
@@ -63,14 +64,14 @@ public class UtilitySpace extends BoardSpace {
 
     /**
      * Do nothing when a player passes over the space
+     *
      * @param player The player who passed over the space
-     * Team member(s) responsible: Deborah
+     *               Team member(s) responsible: Deborah
      */
     @Override
     public void onPassing(Player player) {
         // Do nothing
     }
-
 
 
 }

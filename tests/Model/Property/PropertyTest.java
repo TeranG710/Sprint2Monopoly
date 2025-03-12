@@ -22,15 +22,15 @@ public class PropertyTest {
 
         colorGroup = new ColorGroup(PropertyColor.DARK_BLUE, 2);
         property = new Property(
-            "Boardwalk",
-            39,
-            400,
-            50,
-            new int[]{200, 600, 1400, 1700},
-            2000,
-            200,
-            PropertyColor.DARK_BLUE,
-            colorGroup
+                "Boardwalk",
+                39,
+                400,
+                50,
+                new int[]{200, 600, 1400, 1700},
+                2000,
+                200,
+                PropertyColor.DARK_BLUE,
+                colorGroup
         );
         colorGroup.addProperty(property);
     }

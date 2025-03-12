@@ -25,9 +25,10 @@ public class Player {
 
     /**
      * Constructor for Player
-     * @param name Player's name
+     *
+     * @param name  Player's name
      * @param board Game board
-     * Team member(s) responsible: Matt
+     *              Team member(s) responsible: Matt
      */
     public Player(String name, GameBoard board) {
         this.name = name;
@@ -38,10 +39,12 @@ public class Player {
         this.jailTurns = 0;
 
     }
+
     /**
      * Add a property to the player's portfolio
+     *
      * @param property Property to add
-     * Team member(s) responsible: Matt
+     *                 Team member(s) responsible: Matt
      */
     public void addProperty(Model.Property.Property property) {
         properties.add(property);
@@ -49,8 +52,9 @@ public class Player {
 
     /**
      * Remove a property from the player's portfolio
+     *
      * @param property Property to remove
-     * Team member(s) responsible: Matt
+     *                 Team member(s) responsible: Matt
      */
     public void removeProperty(Property property) {
         if (properties.remove(property)) {
@@ -60,6 +64,7 @@ public class Player {
 
     /**
      * Check if player owns a specific property
+     *
      * @param property Property to check
      * @return true if player owns the property
      * Team member(s) responsible: Matt
@@ -70,6 +75,7 @@ public class Player {
 
     /**
      * Get all properties owned by the player
+     *
      * @return List of owned properties
      * Team member(s) responsible: Matt
      */
@@ -79,6 +85,7 @@ public class Player {
 
     /**
      * Check if player can afford an amount
+     *
      * @param amount Amount to check
      * @return true if player has enough money
      * Team member(s) responsible: Matt
@@ -89,8 +96,9 @@ public class Player {
 
     /**
      * Add money to player's balance
+     *
      * @param amount Amount to add
-     * Team member(s) responsible: Matt
+     *               Team member(s) responsible: Matt
      */
     public void increaseMoney(int amount) {
         money += amount;
@@ -98,8 +106,9 @@ public class Player {
 
     /**
      * Remove money from player's balance
+     *
      * @param amount Amount to remove
-     *Team member(s) responsible: Matt
+     *               Team member(s) responsible: Matt
      */
     public void decreaseMoney(int amount) {
         if (canAfford(amount)) {
@@ -109,6 +118,7 @@ public class Player {
 
     /**
      * Get player's current money
+     *
      * @return Current balance
      * Team member(s) responsible: Matt
      */
@@ -118,6 +128,7 @@ public class Player {
 
     /**
      * Get player's name
+     *
      * @return Player name
      * Team member(s) responsible: Matt
      */
@@ -127,6 +138,7 @@ public class Player {
 
     /**
      * Check if player is in jail
+     *
      * @return true if player is in jail
      * Team member(s) responsible: Matt
      */
@@ -136,8 +148,9 @@ public class Player {
 
     /**
      * Set player's jail status
+     *
      * @param inJail New jail status
-     * Team member(s) responsible: Matt
+     *               Team member(s) responsible: Matt
      */
     public void setInJail(boolean inJail) {
         this.inJail = inJail;
@@ -145,8 +158,9 @@ public class Player {
 
     /**
      * Set player's token
+     *
      * @param token Player's game token
-     * Team member(s) responsible: Matt
+     *              Team member(s) responsible: Matt
      */
     public void setToken(Token token) {
         this.token = token;
@@ -157,6 +171,7 @@ public class Player {
 
     /**
      * Get player's token
+     *
      * @return Player's game token
      * Team member(s) responsible: Matt
      */
@@ -166,6 +181,7 @@ public class Player {
 
     /**
      * Get the game board
+     *
      * @return The game board
      * Team member(s) responsible: Matt
      */
@@ -175,8 +191,8 @@ public class Player {
 
     /**
      * Get the number of railroads owned by the player
-     * @return
-     * Team member(s) responsible: Deborah
+     *
+     * @return Team member(s) responsible: Deborah
      */
     public int getNumRailroads() {
         // Needs implementation

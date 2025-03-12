@@ -7,6 +7,7 @@ import Model.Player;
 import Model.Board.Token;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -15,33 +16,28 @@ import java.util.List;
 public class BoardSpaceTest {
     private BoardSpace testSpace;
     private Token testToken;
-<<<<<<< HEAD
     private GameBoard board;
-=======
 
->>>>>>> c03bec4a651a95cc568c4478e108ba6b1669778e
 
     private class TestBoardSpace extends BoardSpace {
+
         public TestBoardSpace(String name, int position) {
             super(name, position);
         }
 
         @Override
         public void onLanding(Player player) {
+
         }
 
         @Override
         public void onPassing(Player player) {
+
         }
     }
-
     @BeforeEach
     public void setUp() {
-<<<<<<< HEAD
         board = new GameBoard();
-=======
-
->>>>>>> c03bec4a651a95cc568c4478e108ba6b1669778e
         testSpace = new TestBoardSpace("Test Space", 5);
         testToken = new Token("Car");
     }

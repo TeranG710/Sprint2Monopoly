@@ -12,6 +12,7 @@ public class PlayerMovement {
 
     /**
      * Constructor for PlayerMovement
+     *
      * @param player
      * @param board
      */
@@ -19,6 +20,7 @@ public class PlayerMovement {
         this.player = player;
         this.board = board;
     }
+
     public void movePlayer(int rollResult) {
         if (player.isInJail()) {
             if (!handleJailTurn()) {

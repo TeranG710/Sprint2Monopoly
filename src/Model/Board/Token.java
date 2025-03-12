@@ -20,7 +20,7 @@ public class Token {
     /**
      * Sets the owner of the token
      * Team member(s) responsible: Matt
-     * */
+     */
     public void setOwner(Player player) {
         this.owner = player;
     }
@@ -28,7 +28,7 @@ public class Token {
     /**
      * Returns the owner of the token
      * Team member(s) responsible: Matt
-     * */
+     */
     public Player getOwner() {
         return owner;
     }
@@ -36,7 +36,7 @@ public class Token {
     /**
      * Moves the token to a new position
      * Team member(s) responsible: Matt
-     * */
+     */
     public void setPosition(int position) {
         this.position = position;
     }
@@ -44,7 +44,7 @@ public class Token {
     /**
      * Gets position of the token
      * Team member(s) responsible: Matt
-     * */
+     */
     public int getPosition() {
         return position;
     }
@@ -52,7 +52,7 @@ public class Token {
     /**
      * Gets the type of the token
      * Team member(s) responsible: Matt
-     * */
+     */
     public String getType() {
         return type;
     }

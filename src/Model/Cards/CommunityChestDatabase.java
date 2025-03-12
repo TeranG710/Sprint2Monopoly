@@ -2,8 +2,7 @@ package Model.Cards;
 
 import java.util.ArrayList;
 
-public class CommunityChestDatabase extends Card
-{
+public class CommunityChestDatabase extends Card {
     private ArrayList<String> communityChanceDeck;
 
     public CommunityChestDatabase() {
@@ -14,6 +13,7 @@ public class CommunityChestDatabase extends Card
 
     /**
      * This method returns the card type
+     *
      * @return CardType
      * Team member(s) responsible: Jamell
      */
@@ -24,6 +24,7 @@ public class CommunityChestDatabase extends Card
 
     /**
      * This method returns the card deck
+     *
      * @return ArrayList<String>
      * Team member(s) responsible: Jamell
      */

@@ -25,6 +25,7 @@ public class Dice {
 
     /**
      * Rolls a single die from 1 to 6
+     *
      * @return the value of the die
      * Team member(s) responsible: Jamell
      */
@@ -35,13 +36,14 @@ public class Dice {
     /**
      * Checks if the player has rolled doubles 3 times in a row
      * Team member(s) responsible: Jamell
-     * */
+     */
     public boolean goToJail() {
         return doubleRollCounter == 3;
     }
 
     /**
      * Returns the sum of the dice
+     *
      * @return the sum of the dice
      * Team member(s) responsible: Jamell
      */
@@ -51,6 +53,7 @@ public class Dice {
 
     /**
      * Checks if the player has rolled doubles
+     *
      * @return true if the player has rolled doubles
      * Team member(s) responsible: Jamell
      */
@@ -73,7 +76,7 @@ public class Dice {
     /**
      * returns the value of the dice
      * Team member(s) responsible: Jamell
-     * */
+     */
     public int getDie1() {
         return die1;
     }
@@ -81,7 +84,7 @@ public class Dice {
     /**
      * returns the value of the dice
      * Team member(s) responsible: Jamell
-     * */
+     */
     public int getDie2() {
         return die2;
     }

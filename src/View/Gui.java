@@ -13,8 +13,9 @@ public class Gui {
 
     /**
      * The main method to start the GUI application.
+     *
      * @param args Command line arguments.
-     * Team member(s) responsible: Jamell
+     *             Team member(s) responsible: Jamell
      */
     public static void main(String[] args) {
         JFrame frame = new JFrame("Monopoly Game");
@@ -30,8 +31,9 @@ public class Gui {
 
     /**
      * Places the components on the panel.
+     *
      * @param panel The panel to place components on.
-     * Team member(s) responsible: Jamell
+     *              Team member(s) responsible: Jamell
      */
     private static void placeComponents(JPanel panel) {
         panel.setLayout(null);

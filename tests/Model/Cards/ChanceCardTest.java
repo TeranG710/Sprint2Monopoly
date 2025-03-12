@@ -21,7 +21,7 @@ class ChanceCardTest {
     }
 
     @Test
-    void cardRestore(){
+    void cardRestore() {
         ChanceCard chanceCard = new ChanceCard();
         chanceCard.shuffleDeck();
         chanceCard.drawCard();

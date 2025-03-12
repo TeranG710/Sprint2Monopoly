@@ -1,4 +1,5 @@
 package Model.Cards;
+
 import java.util.ArrayList;
 
 public abstract class Card {
@@ -8,6 +9,7 @@ public abstract class Card {
     public Card(String description) {
         this.description = description;
     }
+
     /**
      * @return the cardType of a card
      * Team member(s) responsible: Jamell

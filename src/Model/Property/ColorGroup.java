@@ -2,7 +2,8 @@ package Model.Property;
 
 import java.util.ArrayList;
 import java.util.List;
-import Model.Player; 
+
+import Model.Player;
 
 
 /**
@@ -13,12 +14,13 @@ public class ColorGroup {
     private final PropertyColor color;
     private final List<Property> properties;
     private final int propertiesInGroup;  // Total properties needed for monopoly
-    
+
     /**
      * Constructor for ColorGroup
-     * @param color Name of the color (e.g., "BLUE", "RED")
+     *
+     * @param color             Name of the color (e.g., "BLUE", "RED")
      * @param propertiesInGroup Number of properties in this group (2 or 3)
-     * Team member(s) responsible: Matt
+     *                          Team member(s) responsible: Matt
      */
     public ColorGroup(PropertyColor color, int propertiesInGroup) {
         this.color = color;
@@ -28,8 +30,9 @@ public class ColorGroup {
 
     /**
      * Adds a property to this color group
+     *
      * @param property The property to add
-     * Team member(s) responsible: Matt
+     *                 Team member(s) responsible: Matt
      */
     public void addProperty(Property property) {
         if (properties.size() < propertiesInGroup) {
@@ -39,6 +42,7 @@ public class ColorGroup {
 
     /**
      * Checks if a player has a monopoly on this color group
+     *
      * @param player The player to check
      * @return true if the player owns all properties in the group
      * Team member(s) responsible: Matt
@@ -47,7 +51,7 @@ public class ColorGroup {
         if (player == null || properties.size() != propertiesInGroup) {
             return false;
         }
-        
+
         for (Property property : properties) {
             if (property.getOwner() != player) {
                 return false;
@@ -59,6 +63,7 @@ public class ColorGroup {
     /**
      * Checks if a house can be added to the given property
      * Following Monopoly rules for even building
+     *
      * @param property The property to check
      * @return true if a house can be added
      * Team member(s) responsible: Matt
@@ -69,7 +74,7 @@ public class ColorGroup {
         }
 
         int currentHouses = property.getNumHouses();
-        
+
         for (Property p : properties) {
             if (p.hasHotel()) {
                 return false;
@@ -78,12 +83,13 @@ public class ColorGroup {
                 return false;
             }
         }
-        
+
         return true;
     }
 
     /**
      * Checks if a hotel can be added to the given property
+     *
      * @param property The property to check
      * @return true if a hotel can be added
      * Team member(s) responsible: Matt
@@ -104,6 +110,7 @@ public class ColorGroup {
 
     /**
      * Gets the minimum number of houses on any property in the group
+     *
      * @return The minimum number of houses
      * Team member(s) responsible: Matt
      */
@@ -119,6 +126,7 @@ public class ColorGroup {
 
     /**
      * Gets the number of hotels in the group
+     *
      * @return Number of hotels
      * Team member(s) responsible: Matt
      */
@@ -134,6 +142,7 @@ public class ColorGroup {
 
     /**
      * Checks if all properties in the group are mortgaged
+     *
      * @return true if all properties are mortgaged
      * Team member(s) responsible: Matt
      */
@@ -148,6 +157,7 @@ public class ColorGroup {
 
     /**
      * Gets the color of this group
+     *
      * @return The color
      * Team member(s) responsible: Matt
      */
@@ -157,6 +167,7 @@ public class ColorGroup {
 
     /**
      * Gets the properties in this group
+     *
      * @return List of properties
      * Team member(s) responsible: Matt
      */
@@ -166,6 +177,7 @@ public class ColorGroup {
 
     /**
      * Gets the number of properties in this group
+     *
      * @return Number of properties
      * Team member(s) responsible: Matt
      */

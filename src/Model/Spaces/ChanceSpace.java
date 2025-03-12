@@ -9,9 +9,9 @@ public class ChanceSpace extends BoardSpace {
 
     /**
      * Constructor for ChanceSpace
+     *
      * @param position
-     * @param chanceDeck
-     * Team member(s) responsible: Deborah
+     * @param chanceDeck Team member(s) responsible: Deborah
      */
     public ChanceSpace(int position, ChanceCard chanceDeck) {
         super("Chance", position);
@@ -20,8 +20,9 @@ public class ChanceSpace extends BoardSpace {
 
     /**
      * Draw a chance card when a player lands on the space
+     *
      * @param player The player who landed on the space
-     * Team member(s) responsible: Deborah
+     *               Team member(s) responsible: Deborah
      */
     @Override
     public void onLanding(Player player) {
@@ -31,8 +32,9 @@ public class ChanceSpace extends BoardSpace {
 
     /**
      * Do nothing when a player passes over the space
+     *
      * @param player The player who passed over the space
-     * Team member(s) responsible: Deborah
+     *               Team member(s) responsible: Deborah
      */
     @Override
     public void onPassing(Player player) {

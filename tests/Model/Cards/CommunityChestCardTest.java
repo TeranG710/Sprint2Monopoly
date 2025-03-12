@@ -21,7 +21,7 @@ class CommunityChestCardTest {
     }
 
     @Test
-    void cardRestore(){
+    void cardRestore() {
         CommunityChestCard communityChestCard = new CommunityChestCard();
         communityChestCard.shuffleDeck();
         communityChestCard.drawCard();
