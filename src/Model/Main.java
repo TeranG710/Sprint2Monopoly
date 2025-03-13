@@ -1,11 +1,9 @@
 package Model;
 
-import Model.Board.Dice;
-import Model.Board.GameBoard;
-import Model.Board.Token;
-import Model.Board.TurnManager;
+import Model.Board.*;
 import Model.Cards.ChanceCard;
 import Model.Cards.CommunityChestCard;
+import Model.Exceptions.PlayerNotFoundException;
 
 import java.sql.SQLOutput;
 import java.util.Arrays;
@@ -17,18 +15,18 @@ import java.util.Set;
 /**
  * Main class to run the game
  * This class is responsible for creating the game board, players, and running the game loop.
- * Team Member(s) responsible: Giovanny
+ * Team Member(s) responsible: Giovanny, Jamell
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PlayerNotFoundException {
 
-        //Player and token demo
+        //Player and token demo sprint 1
         Player player = new Player("Alice", new GameBoard());
         player.setToken(new Token("Car"));
         System.out.println(player.getName() + " has a " + player.getToken().getType() + " token.");
         System.out.println("");
 
-        //Cards demo
+        //Cards demo sprint 1
         CommunityChestCard communityChestCard = new CommunityChestCard();
         ChanceCard chanceCard = new ChanceCard();
         int chanceCardCounter = 0;
@@ -42,7 +40,7 @@ public class Main {
         System.out.println("Chance Card Counter: " + chanceCardCounter + '\n' + "Community Chest Card Counter: " + communityChestCounter);
         System.out.println("");
 
-        //shuffle deck
+        //shuffle deck sprint 1
         communityChestCard.cardRestore();
         chanceCard.cardRestore();
         communityChestCard.shuffleDeck();
@@ -58,7 +56,7 @@ public class Main {
         System.out.println("Chance Card Counter: " + chanceCardCounter2 + '\n' + "Community Chest Card Counter: " + communityChestCounter2);
         System.out.println("");
 
-        //Dice Roll Double Demo
+        //Dice Roll Double Demo sprint 1
         Dice dice2 = new Dice();
         int doubleCount = 0;
         while (doubleCount < 3) {
@@ -72,8 +70,31 @@ public class Main {
             System.out.println("Player goes to jail after rolling 3 doubles!");
         }
 
+        //Banker demo sprint 2
+        Banker banker = new Banker();
+        banker.addPlayer(player);
+        System.out.println("Player balance: " + banker.getBalance(player));
+        banker.deposit(player, 100);
+        System.out.println("Player balance after deposit: " + banker.getBalance(player));
+        banker.withdraw(player, 50);
+        System.out.println("Player balance after withdrawal: " + banker.getBalance(player));
+        System.out.println("");
 
-        //Dice demo
+        //Turn manager demo sprint 1
+        Player player1 = new Player("Alice", new GameBoard());
+        Player player2 = new Player("Bob", new GameBoard());
+        Player player3 = new Player("Charlie", new GameBoard());
+        Player player4 = new Player("Dave", new GameBoard());
+        List<Player> players = Arrays.asList(player1, player2, player3, player4);
+        TurnManager turnManager = new TurnManager(players);
+        for (int i = 0; i < 8; i++) {
+            Player currentPlayer = turnManager.getCurrentPlayer();
+            System.out.println("It's " + currentPlayer.getName() + "'s turn!");
+            turnManager.nextTurn();
+        }
+        System.out.println("");
+
+        //Dice demo sprint 1
         Dice dice = new Dice();
         Set<Integer> rolledSums = new HashSet<>();
         while (rolledSums.size() < 12) {

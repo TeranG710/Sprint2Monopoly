@@ -17,7 +17,7 @@ public class Property extends BoardSpace {
     private final int mortgageValue;
     private final PropertyColor color;
     private final ColorGroup colorGroup;
-    private Banker banker;
+    private Banker banker = new Banker();
     private Player owner;
     private boolean isMortgaged;
     private int numHouses;
