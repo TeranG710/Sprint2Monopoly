@@ -1,5 +1,7 @@
 package Model.Spaces;
 
+import Model.Board.Banker;
+import Model.Exceptions.PlayerNotFoundException;
 import Model.Player;
 import Model.Board.Dice;
 import Model.Spaces.BoardSpace;
@@ -9,6 +11,7 @@ public class UtilitySpace extends BoardSpace {
     private static final int RENT_FOR_ONE_OWNED = 4;
     private static final int RENT_FOR_TWO_OWNED = 10;
     private Player owner;
+    private Banker banker;
 
     /**
      * Constructor for UtilitySpace
@@ -28,18 +31,19 @@ public class UtilitySpace extends BoardSpace {
      *               Team member(s) responsible: Deborah
      */
     @Override
-    public void onLanding(Player player) {
+    public void onLanding(Player player) throws PlayerNotFoundException {
         Dice dice = player.getBoard().getDice();
         if (owner == null) {
             // Needs the UI logic
             System.out.println(player.getName() + " landed on " + getName() + " and bought it for $" + PURCHASE_PRICE);
-            player.decreaseMoney(PURCHASE_PRICE);
+            banker.withdraw(player,PURCHASE_PRICE);
             owner = player;
-        } else if (owner != player) {
+        } else if
+        (owner != player) {
             int rent = calculateRent(player);
             System.out.println(player.getName() + " landed on " + getName() + " and paid " + owner.getName() + " $" + rent + " in rent");
-            player.decreaseMoney(rent);
-            owner.increaseMoney(rent);
+            banker.withdraw(player, rent);
+            banker.deposit(owner,rent);
         }
     }
 

@@ -1,5 +1,7 @@
 package Model.Spaces;
 
+import Model.Board.Banker;
+import Model.Exceptions.PlayerNotFoundException;
 import Model.Player;
 import Model.Spaces.BoardSpace;
 
@@ -8,6 +10,7 @@ public class Railroad extends BoardSpace {
     private static final int BASE_RENT = 25;
     private static final double RENT_MULTIPLIER = 2;
     private Player owner;
+    private Banker banker;
 
     /**
      * Constructor for Railroad
@@ -27,15 +30,16 @@ public class Railroad extends BoardSpace {
      *               Team member(s) responsible: Deborah
      */
     @Override
-    public void onLanding(Player player) {
+    public void onLanding(Player player) throws PlayerNotFoundException {
         if (owner == null) {
             // Needs the UI logic
             System.out.println(player.getName() + " landed on " + getName() + " and bought it for $" + PURCHASE_PRICE);
-        } else if (owner != player) {
+        } else if
+        (owner != player) {
             int rent = calculateRent();
             System.out.println(player.getName() + " landed on " + getName() + " and paid " + owner.getName() + " $" + rent + " in rent");
-            player.decreaseMoney(rent);
-            owner.increaseMoney(rent);
+            banker.withdraw(player,rent);
+            banker.deposit(owner,rent);
         }
     }
 

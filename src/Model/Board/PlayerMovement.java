@@ -3,13 +3,14 @@ package Model.Board;
 import Model.Board.GameBoard;
 import Model.Board.Dice;
 import Model.Board.Token;
+import Model.Exceptions.PlayerNotFoundException;
 import Model.Player;
 
 
 public class PlayerMovement {
     private final Player player;
     private final GameBoard board;
-
+    private Banker banker;
     /**
      * Constructor for PlayerMovement
      *
@@ -21,7 +22,7 @@ public class PlayerMovement {
         this.board = board;
     }
 
-    public void movePlayer(int rollResult) {
+    public void movePlayer(int rollResult) throws PlayerNotFoundException {
         if (player.isInJail()) {
             if (!handleJailTurn()) {
                 return;
@@ -36,7 +37,7 @@ public class PlayerMovement {
         board.getBoardElements()[newPosition].onLanding(player);
     }
 
-    private boolean handleJailTurn() {
+    private boolean handleJailTurn() throws PlayerNotFoundException {
         Dice dice = board.getDice();
         dice.roll();
         System.out.println(player.getName() + " rolled a " + dice.getDie1() + " and a " + dice.getDie2());
@@ -49,13 +50,13 @@ public class PlayerMovement {
         player.incrementTurnsInJail();
 
         if (player.getTurnsInJail() >= 3) {
-            if (player.getMoney() < 50) {
+            if (banker.getBalance(player) < 50) {
                 System.out.println(player.getName() + " does not have enough money to pay the $50 fine and is now out of jail!");
                 player.setInJail(false);
                 return true;
             }
             System.out.println(player.getName() + " has been in jail for 3 turns and is now out of jail!");
-            player.decreaseMoney(50);
+            banker.withdraw(player,50);
             player.setInJail(false);
             player.resetTurnsInJail();
             return true;

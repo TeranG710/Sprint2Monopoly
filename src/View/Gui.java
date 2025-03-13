@@ -18,7 +18,7 @@ public class Gui {
      * Team member(s) responsible: Jamell
      */
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Monopoly Game");
+        JFrame frame = new JFrame("Monopoly Model.Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(300, 250);
 
@@ -38,12 +38,12 @@ public class Gui {
     private static void placeComponents(JPanel panel) {
         panel.setLayout(null);
 
-        JButton startButton = new JButton("Start Game");
+        JButton startButton = new JButton("Start Model.Game");
         startButton.setBounds(100, 100, 100, 40);
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Game Started!");
+                System.out.println("Model.Game Started!");
             }
         });
 

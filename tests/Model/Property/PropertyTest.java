@@ -1,6 +1,8 @@
 package Model.Property;
 
+import Model.Board.Banker;
 import Model.Board.GameBoard;
+import Model.Exceptions.PlayerNotFoundException;
 import Model.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,10 +10,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PropertyTest {
+
     private Property property;
     private ColorGroup colorGroup;
     private Player owner;
     private Player otherPlayer;
+    private Banker banker;
 
 
     @BeforeEach
@@ -19,7 +23,7 @@ public class PropertyTest {
         GameBoard board = new GameBoard();
         owner = new Player("TestOwner", board);
         otherPlayer = new Player("TestPlayer", board);
-
+        Banker banker = new Banker();
         colorGroup = new ColorGroup(PropertyColor.DARK_BLUE, 2);
         property = new Property(
                 "Boardwalk",
@@ -30,8 +34,7 @@ public class PropertyTest {
                 2000,
                 200,
                 PropertyColor.DARK_BLUE,
-                colorGroup
-        );
+                colorGroup);
         colorGroup.addProperty(property);
     }
 
@@ -53,7 +56,7 @@ public class PropertyTest {
     }
 
     @Test
-    public void testMortgage() {
+    public void testMortgage() throws PlayerNotFoundException {
         property.setOwner(owner);
         assertTrue(property.mortgage());
         assertTrue(property.isMortgaged());
@@ -61,19 +64,19 @@ public class PropertyTest {
     }
 
     @Test
-    public void testOnLandingNoOwner() {
-        int initialMoney = otherPlayer.getMoney();
+    public void testOnLandingNoOwner() throws PlayerNotFoundException {
+        int initialMoney = banker.getBalance(otherPlayer);
         property.onLanding(otherPlayer);
-        assertEquals(initialMoney, otherPlayer.getMoney());
+        assertEquals(initialMoney, banker.getBalance(otherPlayer));
     }
 
     @Test
-    public void testOnLandingWithOwner() {
+    public void testOnLandingWithOwner() throws PlayerNotFoundException {
         property.setOwner(owner);
-        int initialOtherPlayerMoney = otherPlayer.getMoney();
-        int initialOwnerMoney = owner.getMoney();
+        int initialOtherPlayerMoney = banker.getBalance(otherPlayer);
+        int initialOwnerMoney = banker.getBalance(owner);
         property.onLanding(otherPlayer);
-        assertTrue(otherPlayer.getMoney() < initialOtherPlayerMoney);
-        assertTrue(owner.getMoney() > initialOwnerMoney);
+        assertTrue(banker.getBalance(otherPlayer) < initialOtherPlayerMoney);
+        assertTrue(banker.getBalance(owner)> initialOwnerMoney);
     }
 }

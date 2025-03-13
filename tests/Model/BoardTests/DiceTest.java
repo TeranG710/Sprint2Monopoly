@@ -52,11 +52,13 @@ public class DiceTest {
         for (int i = 0; i < 3; i++) {
             do {
                 dice.roll();
-            } while (dice.getDie1() != dice.getDie2()); // Ensure we roll a double
+            } while
+            (dice.getDie1() != dice.getDie2()); // Ensure we roll a double
             doubleCount++;
             dice.isDouble(); // Increment the double counter
         }
         assertEquals(3, doubleCount, "Should have rolled three doubles");
         assertTrue(dice.goToJail(), "Player should go to jail after three doubles");
+
     }
 }

@@ -1,10 +1,14 @@
 package Model.Spaces;
 
+import Model.Board.Banker;
+import Model.Exceptions.PlayerNotFoundException;
 import Model.Player;
 import Model.Spaces.BoardSpace;
 
 public class GoSpace extends BoardSpace {
+
     private static final int GO_MONEY = 200;
+    Banker banker;
 
     /**
      * Constructor for GoSpace
@@ -21,8 +25,8 @@ public class GoSpace extends BoardSpace {
      *               Team member(s) responsible: Deborah
      */
     @Override
-    public void onLanding(Player player) {
-        player.increaseMoney(GO_MONEY);
+    public void onLanding(Player player) throws PlayerNotFoundException {
+        banker.deposit(player, GO_MONEY);
     }
 
     /**
@@ -32,7 +36,7 @@ public class GoSpace extends BoardSpace {
      *               Team member(s) responsible: Deborah
      */
     @Override
-    public void onPassing(Player player) {
-        player.increaseMoney(GO_MONEY);
+    public void onPassing(Player player) throws PlayerNotFoundException {
+        banker.deposit(player, GO_MONEY);
     }
 }

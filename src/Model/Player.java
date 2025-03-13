@@ -27,13 +27,12 @@ public class Player {
      * Constructor for Player
      *
      * @param name  Player's name
-     * @param board Game board
+     * @param board Model.Game board
      * Team member(s) responsible: Matt
      */
     public Player(String name, GameBoard board) {
         this.name = name;
         this.board = board;
-        this.money = 1500; // Starting money in Monopoly
         this.properties = new ArrayList<>();
         this.inJail = false;
         this.jailTurns = 0;
@@ -94,37 +93,6 @@ public class Player {
         return money >= amount;
     }
 
-    /**
-     * Add money to player's balance
-     *
-     * @param amount Amount to add
-     *               Team member(s) responsible: Matt
-     */
-    public void increaseMoney(int amount) {
-        money += amount;
-    }
-
-    /**
-     * Remove money from player's balance
-     *
-     * @param amount Amount to remove
-     * Team member(s) responsible: Matt
-     */
-    public void decreaseMoney(int amount) {
-        if (canAfford(amount)) {
-            money -= amount;
-        }
-    }
-
-    /**
-     * Get player's current money
-     *
-     * @return Current balance
-     * Team member(s) responsible: Matt
-     */
-    public int getMoney() {
-        return money;
-    }
 
     /**
      * Get player's name

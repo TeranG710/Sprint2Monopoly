@@ -1,6 +1,7 @@
 package Model.Spaces;
 
 import Model.Board.Token;
+import Model.Exceptions.PlayerNotFoundException;
 import Model.Player;
 
 import java.util.ArrayList;
@@ -85,7 +86,7 @@ public abstract class BoardSpace {
      * @param player The player who landed on the space
      *               Team member(s) responsible: Matt
      */
-    public abstract void onLanding(Player player);
+    public abstract void onLanding(Player player) throws PlayerNotFoundException;
 
     /**
      * Abstract method that defines what happens when a player passes over this space
@@ -93,5 +94,5 @@ public abstract class BoardSpace {
      * @param player The player who passed over the space
      *               Team member(s) responsible: Matt
      */
-    public abstract void onPassing(Player player);
+    public abstract void onPassing(Player player) throws PlayerNotFoundException;
 }

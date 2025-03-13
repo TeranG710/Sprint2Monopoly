@@ -38,7 +38,11 @@ public class Dice {
      * Team member(s) responsible: Jamell
      */
     public boolean goToJail() {
-        return doubleRollCounter == 3;
+        if (doubleRollCounter == 3) {
+            resetDoubleRollCounter();
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -73,6 +77,7 @@ public class Dice {
     public void resetDoubleRollCounter() {
         doubleRollCounter = 0;
     }
+
     /**
      * returns the value of the dice
      * Team member(s) responsible: Jamell

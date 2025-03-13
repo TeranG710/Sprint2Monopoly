@@ -1,5 +1,7 @@
 package Model.Property;
 
+import Model.Board.Banker;
+import Model.Exceptions.PlayerNotFoundException;
 import Model.Spaces.BoardSpace;
 import Model.Player;
 
@@ -15,7 +17,7 @@ public class Property extends BoardSpace {
     private final int mortgageValue;
     private final PropertyColor color;
     private final ColorGroup colorGroup;
-
+    private Banker banker;
     private Player owner;
     private boolean isMortgaged;
     private int numHouses;
@@ -56,7 +58,7 @@ public class Property extends BoardSpace {
      * Team member(s) responsible: Matt
      */
     @Override
-    public void onLanding(Player player) {
+    public void onLanding(Player player) throws PlayerNotFoundException {
         if (owner == null) {
             offerPurchase(player);
         } else if (owner != player && !isMortgaged) {
@@ -88,10 +90,10 @@ public class Property extends BoardSpace {
      * @param player The player who must pay rent
      *               Team member(s) responsible: Matt
      */
-    private void collectRent(Player player) {
+    private void collectRent(Player player) throws PlayerNotFoundException {
         int rentAmount = calculateRent();
-        player.decreaseMoney(rentAmount);
-        owner.increaseMoney(rentAmount);
+        banker.withdraw(player,rentAmount);
+        banker.deposit(owner,rentAmount);
     }
 
     /**
@@ -174,10 +176,10 @@ public class Property extends BoardSpace {
      * @return true if property was successfully mortgaged
      * Team member(s) responsible: Matt
      */
-    public boolean mortgage() {
+    public boolean mortgage() throws PlayerNotFoundException {
         if (!isMortgaged && numHouses == 0 && !hasHotel) {
             isMortgaged = true;
-            owner.increaseMoney(mortgageValue);
+            banker.deposit(owner,mortgageValue);
             return true;
         }
         return false;
@@ -189,11 +191,11 @@ public class Property extends BoardSpace {
      * @return true if property was successfully unmortgaged
      * Team member(s) responsible: Matt
      */
-    public boolean unmortgage() {
+    public boolean unmortgage() throws PlayerNotFoundException {
         if (isMortgaged) {
             int cost = (int) (mortgageValue * 1.1); // 10% interest
             if (owner.canAfford(cost)) {
-                owner.decreaseMoney(cost);
+                banker.withdraw(owner,cost);
                 isMortgaged = false;
                 return true;
             }

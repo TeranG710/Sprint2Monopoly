@@ -35,7 +35,7 @@ Before running the project, ensure you have the following installed:
 
 ## How to Play
 
-### Starting the Game
+### Starting the Model.Game
 
 - Launch the application to access the main menu.
 - Choose the number of players (2-4).

@@ -4,9 +4,14 @@ import Model.Board.Dice;
 import Model.Board.GameBoard;
 import Model.Board.Token;
 import Model.Board.TurnManager;
+import Model.Cards.ChanceCard;
+import Model.Cards.CommunityChestCard;
 
+import java.sql.SQLOutput;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -17,12 +22,70 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
+        //Player and token demo
+        Player player = new Player("Alice", new GameBoard());
+        player.setToken(new Token("Car"));
+        System.out.println(player.getName() + " has a " + player.getToken().getType() + " token.");
+        System.out.println("");
+
+        //Cards demo
+        CommunityChestCard communityChestCard = new CommunityChestCard();
+        ChanceCard chanceCard = new ChanceCard();
+        int chanceCardCounter = 0;
+        int communityChestCounter = 0;
+        for(int i = 0; i < chanceCard.getCardDeck().size(); i++){
+            System.out.println("Community Chest Card: " + communityChestCard.drawCard());
+            System.out.println("Chance Card: " + chanceCard.drawCard());
+            chanceCardCounter++;
+            communityChestCounter++;
+        }
+        System.out.println("Chance Card Counter: " + chanceCardCounter + '\n' + "Community Chest Card Counter: " + communityChestCounter);
+        System.out.println("");
+
+        //shuffle deck
+        communityChestCard.cardRestore();
+        chanceCard.cardRestore();
+        communityChestCard.shuffleDeck();
+        chanceCard.shuffleDeck();
+        int chanceCardCounter2 = 0;
+        int communityChestCounter2 = 0;
+        for(int i = 0; i < communityChestCard.getCardDeck().size(); i++){
+            System.out.println("Community Chest Card: " + communityChestCard.drawCard());
+            System.out.println("Chance Card: " + chanceCard.drawCard());
+            chanceCardCounter2++;
+            communityChestCounter2++;
+        }
+        System.out.println("Chance Card Counter: " + chanceCardCounter2 + '\n' + "Community Chest Card Counter: " + communityChestCounter2);
+        System.out.println("");
+
+        //Dice Roll Double Demo
+        Dice dice2 = new Dice();
+        int doubleCount = 0;
+        while (doubleCount < 3) {
+            dice2.roll();
+            if (dice2.isDouble()) {
+                doubleCount++;
+                System.out.println("Double rolled! Count: " + doubleCount);
+            }
+        }
+        if (dice2.goToJail()) {
+            System.out.println("Player goes to jail after rolling 3 doubles!");
+        }
 
 
+        //Dice demo
+        Dice dice = new Dice();
+        Set<Integer> rolledSums = new HashSet<>();
+        while (rolledSums.size() < 12) {
+            dice.roll();
+            int sum = dice.getSum();
 
-
-
-
+            if (!rolledSums.contains(sum)) {
+                rolledSums.add(sum);
+                System.out.println("Die 1: " + dice.getDie1() + ", Die 2: " + dice.getDie2() + ", Sum: " + sum);
+            }
+        }
+        System.out.println("");
 
 
 //        GameBoard board = new GameBoard();
