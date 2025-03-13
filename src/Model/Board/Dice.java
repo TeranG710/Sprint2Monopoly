@@ -67,12 +67,12 @@ public class Dice {
      * Team member(s) responsible: Jamell
      */
     public void incrementDoubleRollCounter() {
-        if (doubleRollCounter == 3) {
-            doubleRollCounter = 0;
-        }
         doubleRollCounter++;
     }
 
+    public void resetDoubleRollCounter() {
+        doubleRollCounter = 0;
+    }
     /**
      * returns the value of the dice
      * Team member(s) responsible: Jamell
