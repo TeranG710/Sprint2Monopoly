@@ -19,11 +19,13 @@ public class PropertyTest {
 
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws PlayerNotFoundException {
         GameBoard board = new GameBoard();
         owner = new Player("TestOwner", board);
         otherPlayer = new Player("TestPlayer", board);
         Banker banker = new Banker();
+        banker.addPlayer(owner);
+        banker.addPlayer(otherPlayer);
         colorGroup = new ColorGroup(PropertyColor.DARK_BLUE, 2);
         property = new Property(
                 "Boardwalk",

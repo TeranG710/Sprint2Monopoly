@@ -90,4 +90,19 @@ public class Banker {
         playerBalances.put(player,playerBalances.get(player) - amount);
     }
 
+
+//    public void collectRent(){
+//        //needs implementation
+//    }
+//
+//    public void mortageProperty(){
+//        //needs implementation
+//    }
+//
+//    public void unmortageProperty(){
+//        //needs implementation
+//    }
+
+
+
 }
