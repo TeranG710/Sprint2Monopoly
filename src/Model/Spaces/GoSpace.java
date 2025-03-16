@@ -2,8 +2,7 @@ package Model.Spaces;
 
 import Model.Board.Banker;
 import Model.Exceptions.PlayerNotFoundException;
-import Model.Player;
-import Model.Spaces.BoardSpace;
+import Model.Board.Player;
 
 public class GoSpace extends BoardSpace {
 

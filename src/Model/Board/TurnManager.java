@@ -1,7 +1,5 @@
 package Model.Board;
 
-import Model.Player;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

@@ -1,10 +1,6 @@
 package Model.Board;
 
-import Model.Board.GameBoard;
-import Model.Board.Dice;
-import Model.Board.Token;
 import Model.Exceptions.PlayerNotFoundException;
-import Model.Player;
 
 
 public class PlayerMovement {

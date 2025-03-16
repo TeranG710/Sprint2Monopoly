@@ -1,10 +1,8 @@
-package Model;
+package Model.Board;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Model.Board.GameBoard;
-import Model.Board.Token;
 import Model.Property.Property;  // Update import to match package
 
 

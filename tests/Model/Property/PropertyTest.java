@@ -3,7 +3,7 @@ package Model.Property;
 import Model.Board.Banker;
 import Model.Board.GameBoard;
 import Model.Exceptions.PlayerNotFoundException;
-import Model.Player;
+import Model.Board.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

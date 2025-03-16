@@ -3,7 +3,7 @@ package Model.Property;
 import Model.Board.Banker;
 import Model.Exceptions.PlayerNotFoundException;
 import Model.Spaces.BoardSpace;
-import Model.Player;
+import Model.Board.Player;
 
 /**
  * Represents a property space on the Monopoly board.

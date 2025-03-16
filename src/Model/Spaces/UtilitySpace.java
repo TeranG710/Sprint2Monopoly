@@ -2,9 +2,8 @@ package Model.Spaces;
 
 import Model.Board.Banker;
 import Model.Exceptions.PlayerNotFoundException;
-import Model.Player;
+import Model.Board.Player;
 import Model.Board.Dice;
-import Model.Spaces.BoardSpace;
 
 public class UtilitySpace extends BoardSpace {
     private static final int PURCHASE_PRICE = 150;

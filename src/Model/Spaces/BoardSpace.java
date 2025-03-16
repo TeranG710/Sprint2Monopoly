@@ -2,7 +2,7 @@ package Model.Spaces;
 
 import Model.Board.Token;
 import Model.Exceptions.PlayerNotFoundException;
-import Model.Player;
+import Model.Board.Player;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,7 +2,7 @@ package Model.Spaces;
 
 import Model.Board.Banker;
 import Model.Exceptions.PlayerNotFoundException;
-import Model.Player;
+import Model.Board.Player;
 
 // Needs to be modified to allow user choice between paying a flat fee or 10% of their total assets
 public class TaxSpace extends BoardSpace {

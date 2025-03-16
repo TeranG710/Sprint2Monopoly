@@ -1,6 +1,6 @@
 package Model.Spaces;
 
-import Model.Player;
+import Model.Board.Player;
 
 public class GoToJailSpace extends BoardSpace {
     /**

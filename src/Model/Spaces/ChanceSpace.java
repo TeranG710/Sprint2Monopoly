@@ -1,8 +1,7 @@
 package Model.Spaces;
 
 import Model.Cards.ChanceCard;
-import Model.Player;
-import Model.Spaces.BoardSpace;
+import Model.Board.Player;
 
 public class ChanceSpace extends BoardSpace {
     private ChanceCard chanceDeck;

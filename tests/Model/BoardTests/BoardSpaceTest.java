@@ -3,7 +3,7 @@ package Model.BoardTests;
 
 import Model.Board.GameBoard;
 import Model.Spaces.BoardSpace;
-import Model.Player;
+import Model.Board.Player;
 import Model.Board.Token;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
