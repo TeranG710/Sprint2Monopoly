@@ -1,3 +1,12 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class represents the game board in Monopoly.
+ *  Contains all the spaces on the board and initializes them.
+ * Team Member(s) responsible: Deborah
+ * */
+
+
 package Model.Board;
 
 import Model.Cards.ChanceCard;

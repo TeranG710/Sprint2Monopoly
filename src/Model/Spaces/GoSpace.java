@@ -1,3 +1,11 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class represents the Go space on the board.
+ * When a player lands on the Go space, they receive $200.
+ * Team Member(s) responsible: Deborah
+ * */
+
 package Model.Spaces;
 
 import Model.Board.Banker;

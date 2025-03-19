@@ -1,3 +1,12 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class is used to draw a card from the community chest deck,
+ * shuffle the deck, and restore the deck to its original state.
+ * Team Member(s) responsible: Jamell
+ * */
+
+
 package Model.Cards;
 
 import java.util.Collections;

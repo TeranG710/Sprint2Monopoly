@@ -1,3 +1,11 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class represents the Tax spaces on the board. Players can choose to pay a flat fee or 10% of their total assets.
+ * This class is a subclass of the BoardSpace class.
+ * Team Member(s) responsible: Deborah
+ * */
+
 package Model.Spaces;
 
 import Model.Board.Banker;

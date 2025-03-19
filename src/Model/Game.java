@@ -1,3 +1,12 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: Game class is the main class that controls the game. It has the banker, player, game board, chance card and community chest card objects.
+ * It has methods to start the game, add player, declare winner and end the game.
+ * Team Member(s) responsible: Jamell
+ * */
+
+
 package Model;
 
 import Model.Board.Banker;
@@ -10,10 +19,7 @@ import Model.Exceptions.*;
 import java.util.ArrayList;
 
 
-/**
- * Game class is the main class that controls the game. It has the banker, player, game board, chance card and community chest card objects.
- * It has methods to start the game, add player, declare winner and end the game.
- */
+
 
 public class Game {
 

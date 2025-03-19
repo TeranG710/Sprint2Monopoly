@@ -1,3 +1,11 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class is responsible for creating the Community Chest card deck
+ * and preloading the cards
+ * Team Member(s) responsible: Jamell
+ * */
+
 package Model.Cards;
 
 import java.util.ArrayList;

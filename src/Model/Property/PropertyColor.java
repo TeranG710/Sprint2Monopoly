@@ -1,3 +1,11 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class is an enum representing the different property colors in Monopoly
+ * Team Member(s) responsible: Matt
+ * */
+
+
 package Model.Property;
 
 /**

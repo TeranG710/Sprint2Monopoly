@@ -1,3 +1,10 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class represents a player's token on the Monopoly board
+ * Team Member(s) responsible: Matt
+ * */
+
 package Model.Board;
 
 /**

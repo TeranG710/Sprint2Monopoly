@@ -1,3 +1,10 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class manages the turn order and progression in a Monopoly game.
+ * Team Member(s) responsible: Giovanny
+ * */
+
 package Model.Board;
 
 import java.util.ArrayList;

@@ -1,3 +1,13 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class represents the Community Chest space on the board
+ * This class is a subclass of the BoardSpace class
+ * This class has a CommunityChestCard object that represents the deck of community chest cards
+ * Team Member(s) responsible: Deborah
+ * */
+
+
 package Model.Spaces;
 
 import Model.Cards.CommunityChestCard;

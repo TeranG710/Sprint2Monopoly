@@ -1,5 +1,11 @@
-package Model;
+/*
+* CSCI 234: Intro to Software Engineering
+* Group: Giovanny, Jamell, Matt, Deborah
+* Purpose: This class is responsible for creating the game board, players, and running the game loop.
+* Team Member(s) responsible: Giovanny, Jamell
+* */
 
+package Model;
 import Model.Board.*;
 import Model.Cards.ChanceCard;
 import Model.Cards.CommunityChestCard;
@@ -10,12 +16,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
-/**
- * Main class to run the game
- * This class is responsible for creating the game board, players, and running the game loop.
- * Team Member(s) responsible: Giovanny, Jamell
- */
 public class Main {
     public static void main(String[] args) throws PlayerNotFoundException {
 

@@ -1,3 +1,12 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class represents the Railroad space on the board
+ * It extends the BoardSpace class and includes functionality for purchasing the railroad
+ * and paying rent based on the number of railroads owned by the player.
+ * Team Member(s) responsible: Deborah
+ * */
+
 package Model.Spaces;
 
 import Model.Board.Banker;

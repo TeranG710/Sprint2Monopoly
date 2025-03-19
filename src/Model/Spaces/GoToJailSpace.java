@@ -1,3 +1,11 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class represents the GoTo Jail space on the board
+ * This space sends the player to jail when they land on it
+ * Team Member(s) responsible: Deborah
+ * */
+
 package Model.Spaces;
 
 import Model.Board.Player;

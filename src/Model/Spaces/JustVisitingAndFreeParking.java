@@ -1,3 +1,11 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class represents the Just Visiting and Free Parking space on the board
+ * This class is a subclass of the BoardSpace class
+ * Team Member(s) responsible: Deborah
+ * */
+
 package Model.Spaces;
 
 import Model.Board.Player;

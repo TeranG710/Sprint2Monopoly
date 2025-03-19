@@ -1,3 +1,12 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class represents the Chance space on the board.
+ * When a player lands on this space, they draw a chance card.
+ * Team Member(s) responsible: Deborah
+ * */
+
+
 package Model.Spaces;
 
 import Model.Cards.ChanceCard;

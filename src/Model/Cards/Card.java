@@ -1,3 +1,12 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class is the parent class for all the cards in the game.
+ * It contains the description of the card and the card type.
+ * Team Member(s) responsible: Jamell
+ * */
+
+
 package Model.Cards;
 
 import java.util.ArrayList;

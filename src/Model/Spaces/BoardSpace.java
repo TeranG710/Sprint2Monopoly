@@ -1,3 +1,12 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class represents a space on the Monopoly board.
+ * This can be extended to create specific types of spaces like properties,
+ * Team Member(s) responsible: Deborah
+ * */
+
+
 package Model.Spaces;
 
 import Model.Board.Token;

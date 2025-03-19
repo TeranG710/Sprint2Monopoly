@@ -1,3 +1,12 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class is responsible for drawing a chance card from the chance deck,
+ * shuffling the chance deck, and restoring the chance deck to its original state.
+ * Team Member(s) responsible: Jamell
+ * */
+
+
 package Model.Cards;
 
 import java.util.Collections;

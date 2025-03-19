@@ -1,3 +1,10 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class is responsible for managing the player's money and transactions
+ * Team Member(s) responsible: Jamell
+ * */
+
 package Model.Board;
 import Model.Exceptions.InsufficientFundsException;
 import Model.Exceptions.InvalidTransactionException;

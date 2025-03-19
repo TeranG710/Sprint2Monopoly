@@ -1,3 +1,11 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class creates the graphical user interface for the Monopoly game.
+ * Team Member(s) responsible: Jamell
+ * */
+
+
 package View;
 
 import javax.swing.JButton;

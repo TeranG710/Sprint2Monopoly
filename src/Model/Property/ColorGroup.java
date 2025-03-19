@@ -1,3 +1,12 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: Represents a color group of properties
+ * Manages property grouping and building rules.
+ * Team Member(s) responsible: Matt
+ * */
+
+
 package Model.Property;
 
 import java.util.ArrayList;

@@ -1,3 +1,12 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class represents a property on the Monopoly board.
+ * Properties can be owned, mortgaged, and improved with houses/hotels.
+ * Team Member(s) responsible: Matt
+ * */
+
+
 package Model.Property;
 
 import Model.Board.Banker;

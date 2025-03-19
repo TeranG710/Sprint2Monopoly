@@ -1,3 +1,11 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: Represents a player in Monopoly game
+ * Team Member(s) responsible: Matt
+ * */
+
+
 package Model.Board;
 
 import java.util.ArrayList;
