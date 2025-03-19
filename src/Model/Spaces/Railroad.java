@@ -1,6 +1,6 @@
 package Model.Spaces;
 
-import Model.Board.Banker;
+import Model.Property.Banker;
 import Model.Exceptions.PlayerNotFoundException;
 import Model.Board.Player;
 
@@ -26,21 +26,34 @@ public class Railroad extends BoardSpace {
      * Pay rent to the owner if the space is owned, otherwise buy the space
      *
      * @param player The player who landed on the space
-     *               Team member(s) responsible: Deborah
+     *               Team member(s) responsible: Deborah, Updated latest by Matt
      */
     @Override
-    public void onLanding(Player player) throws PlayerNotFoundException {
-        if (owner == null) {
-            // Needs the UI logic
+public void onLanding(Player player) throws PlayerNotFoundException {
+    if (owner == null) {
+        // Offer to purchase the railroad
+        if (banker != null) {
+            // Use banker to handle purchase
+            if (player.canAfford(PURCHASE_PRICE)) {
+                banker.withdraw(player, PURCHASE_PRICE);
+                this.owner = player;
+                System.out.println(player.getName() + " landed on " + getName() + " and bought it for $" + PURCHASE_PRICE);
+            }
+        } else {
             System.out.println(player.getName() + " landed on " + getName() + " and bought it for $" + PURCHASE_PRICE);
-        } else if
-        (owner != player) {
-            int rent = calculateRent();
-            System.out.println(player.getName() + " landed on " + getName() + " and paid " + owner.getName() + " $" + rent + " in rent");
-            banker.withdraw(player,rent);
-            banker.deposit(owner,rent);
         }
+    } else if (owner != player) {
+        // Pay rent
+        int rent = calculateRent();
+        if (banker != null) {
+            banker.transferMoney(player, owner, rent);
+        } else {
+            banker.withdraw(player, rent);
+            banker.deposit(owner, rent);
+        }
+        System.out.println(player.getName() + " landed on " + getName() + " and paid " + owner.getName() + " $" + rent + " in rent");
     }
+}
 
     /**
      * Do nothing when a player passes over the space

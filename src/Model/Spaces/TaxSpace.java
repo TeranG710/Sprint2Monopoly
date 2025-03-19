@@ -1,6 +1,6 @@
 package Model.Spaces;
 
-import Model.Board.Banker;
+import Model.Property.banker;
 import Model.Exceptions.PlayerNotFoundException;
 import Model.Board.Player;
 
@@ -14,6 +14,15 @@ public class TaxSpace extends BoardSpace {
 
     public TaxSpace(String name, int position) {
         super(name, position);
+    }
+
+    /**
+     * Set the banker for this space
+     * @param banker The banker
+     * Team member(s) responsible: Matt
+     */
+    public void setBanker(Banker banker) {
+        this.banker = banker;
     }
 
     /**
