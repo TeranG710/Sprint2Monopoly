@@ -50,4 +50,8 @@ public class CommunityChestCard extends CommunityChestDatabase {
         communityChestDeck = new CommunityChestDatabase();
         shuffleDeck();
     }
+
+    public void useCard(String message){
+        // for use cards that have a specific action
+    }
 }

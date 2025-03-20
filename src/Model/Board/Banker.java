@@ -39,7 +39,7 @@ public class Banker {
      * if player is already in the list, throws PlayerNotFoundException
      *
      * @param player Player to add
-     *               Team member(s) responsible: Jamell
+     * Team member(s) responsible: Jamell
      */
     public void addPlayer(Player player) throws PlayerAlreadyExistsException{
         if (playerBalances.containsKey(player)) {

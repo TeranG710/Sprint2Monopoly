@@ -50,4 +50,8 @@ public class ChanceCard extends ChanceCardDatabase {
         chanceDeck = new ChanceCardDatabase();
         shuffleDeck();
     }
+
+    public void useCard(String message){
+        // for use cards that have a specific action
+    }
 }

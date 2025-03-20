@@ -115,8 +115,6 @@ public class Property extends BoardSpace {
      * Team member(s) responsible: Matt
      */
     private void offerPurchase(Player player) throws PlayerNotFoundException {
-
-
         try {
             banker.sellProperty(this, player);
         } catch (Exception e) {
@@ -139,7 +137,6 @@ public class Property extends BoardSpace {
         }
 
         try {
-
             banker.collectRent(this, player);
         } catch (Exception e) {
             int rentAmount = calculateRent();

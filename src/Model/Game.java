@@ -8,21 +8,15 @@
 
 
 package Model;
-
 import Model.Board.Banker;
 import Model.Board.GameBoard;
 import Model.Board.Player;
 import Model.Cards.ChanceCard;
 import Model.Cards.CommunityChestCard;
 import Model.Exceptions.*;
-
 import java.util.ArrayList;
 
-
-
-
 public class Game {
-
     private Banker banker;
     private GameBoard board;
     private ChanceCard chanceCard;
@@ -35,19 +29,11 @@ public class Game {
         this.banker = new Banker();
         this.chanceCard = new ChanceCard();
         this.communityChestCard = new CommunityChestCard();
-        this.board = new GameBoard(chanceCard, communityChestCard);
+        this.board = new GameBoard();
         this.players = new ArrayList<>();
         this.inProgress = false;
     }
-    public GameBoard getBoard() {
-        return board;
-    }
-    public ChanceCard getChanceCard() {
-        return chanceCard;
-    }
-    public CommunityChestCard getCommunityChestCard() {
-        return communityChestCard;
-    }
+
 
     /**
      * If the game is in progress already, throws a GameInProgressException.
@@ -60,7 +46,6 @@ public class Game {
         }
         inProgress = true;
     }
-
 
     /**
      * This method is used to check if the game is in progress.
@@ -121,14 +106,22 @@ public class Game {
         if (players.isEmpty()) {
             throw new PlayerNotFoundException();
         }
-        Player winner = players.get(0);
-        for (Player p : players) {
-            if(banker.getBalance(winner) < banker.getBalance(p)){
-                winner = p;
+        Player winner = players.getFirst();
+        for (Player player : players) {
+            if(banker.getBalance(winner) < banker.getBalance(player)){
+                winner = player;
             }
         }
         return winner;
     }
+
+    public void resetGame() {
+        if (!gameInProgress()) {
+            throw new GameNotInProgressException();
+        }
+
+    }
+
 
     /**
      * This method is used to end the game.
@@ -142,8 +135,10 @@ public class Game {
             throw new GameEndedEarlyException();
         }
         try {
+            resetGame();
             System.out.println("Game over! The winner is: " + winner().getName());
-        } catch (PlayerNotFoundException e) {
+        } catch (PlayerNotFoundException e)
+        {
             throw new PlayerNotFoundException();
         }
     }

@@ -32,12 +32,14 @@ public class GameBoard {
     private ColorGroup yellowGroup;
     private ColorGroup greenGroup;
     private ColorGroup blueGroup;
+    private ChanceCard chanceCard;
+    private CommunityChestCard communityChestCard;
 
     /**
      * Initializes the game board with all the spaces.
      * Team member(s) responsible: Deborah
      */
-    public GameBoard(ChanceCard chanceCard, CommunityChestCard communityChestCard) {
+    public GameBoard() {
         this.boardElements = new BoardSpace[NUM_SPACES];
         this.dice = new Dice();
         initializeColorGroups();

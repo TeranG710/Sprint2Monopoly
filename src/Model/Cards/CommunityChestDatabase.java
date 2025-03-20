@@ -63,5 +63,4 @@ public class CommunityChestDatabase extends Card {
         communityChanceDeck.add("You have won second prize in a beauty contest. Collect $10");
         communityChanceDeck.add("You inherit $100");
     }
-
 }

@@ -6,9 +6,7 @@
  * Team Member(s) responsible: Deborah
  * */
 
-
 package Model.Spaces;
-
 import Model.Cards.ChanceCard;
 import Model.Board.Player;
 
@@ -30,7 +28,7 @@ public class ChanceSpace extends BoardSpace {
      * Draw a chance card when a player lands on the space
      *
      * @param player The player who landed on the space
-     *               Team member(s) responsible: Deborah
+     * Team member(s) responsible: Deborah
      */
     @Override
     public void onLanding(Player player) {
