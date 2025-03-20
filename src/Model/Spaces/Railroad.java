@@ -35,19 +35,30 @@ public class Railroad extends BoardSpace {
      * Pay rent to the owner if the space is owned, otherwise buy the space
      *
      * @param player The player who landed on the space
-     *               Team member(s) responsible: Deborah
+     * Team member(s) responsible: Deborah, Updated latest by Matt
      */
     @Override
     public void onLanding(Player player) throws PlayerNotFoundException {
         if (owner == null) {
-            // Needs the UI logic
-            System.out.println(player.getName() + " landed on " + getName() + " and bought it for $" + PURCHASE_PRICE);
-        } else if
-        (owner != player) {
+            if (banker != null) {
+                if (banker.getBalance(player) > PURCHASE_PRICE) {
+                    banker.withdraw(player, PURCHASE_PRICE);
+                    this.owner = player;
+                    System.out.println(player.getName() + " landed on " + getName() + " and bought it for $" + PURCHASE_PRICE);
+                }
+            } else {
+                System.out.println(player.getName() + " landed on " + getName() + " and bought it for $" + PURCHASE_PRICE);
+            }
+        } else if (owner != player) {
+
             int rent = calculateRent();
+            if (banker != null) {
+                banker.transferMoney(player, owner, rent);
+            } else {
+                banker.withdraw(player, rent);
+                banker.deposit(owner, rent);
+            }
             System.out.println(player.getName() + " landed on " + getName() + " and paid " + owner.getName() + " $" + rent + " in rent");
-            banker.withdraw(player,rent);
-            banker.deposit(owner,rent);
         }
     }
 
@@ -55,35 +66,53 @@ public class Railroad extends BoardSpace {
      * Do nothing when a player passes over the space
      *
      * @param player The player who passed over the space
-     *               Team member(s) responsible: Deborah
+     * Team member(s) responsible: Deborah
      */
     @Override
     public void onPassing(Player player) {
         // Do nothing
     }
 
+    /**
+     * Set the owner of the railroad
+     *
+     * @param player The player who owns the railroad
+     * Team member(s) responsible: Deborah
+     */
     public void SetOwner(Player player) {
         owner = player;
     }
 
+    /**
+     * Get the owner of the railroad
+     *
+     * @return The player who owns the railroad
+     * Team member(s) responsible: Deborah
+     */
     public Player getOwner() {
         return owner;
     }
 
+    /**
+     * Get the purchase price of the railroad
+     *
+     * @return The purchase price of the railroad
+     * Team member(s) responsible: Deborah
+     */
     public int getPurchasePrice() {
         return PURCHASE_PRICE;
     }
 
     /**
      * Calculate the rent based on the number of railroads owned by the owner
-     *
-     * @return
+     * @return rent amount
+     * Team member(s) responsible: Deborah
      */
     private int calculateRent() {
         if (owner == null) {
             return 0;
         }
-        int numRailroads = owner.getNumRailroads();
+        int numRailroads = 1 ;//owner.getProperties();
         return BASE_RENT * (int) Math.pow(RENT_MULTIPLIER, numRailroads - 1);
 
     }

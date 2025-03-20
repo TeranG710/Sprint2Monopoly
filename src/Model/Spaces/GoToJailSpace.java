@@ -28,7 +28,7 @@ public class GoToJailSpace extends BoardSpace {
      */
     @Override
     public void onLanding(Player player) {
-        player.goToJail();
+        player.setInJail(true);
     }
 
     /**

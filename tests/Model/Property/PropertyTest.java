@@ -2,6 +2,7 @@ package Model.Property;
 
 import Model.Board.Banker;
 import Model.Board.GameBoard;
+import Model.Board.HumanPlayer;
 import Model.Exceptions.PlayerNotFoundException;
 import Model.Board.Player;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,8 +22,8 @@ public class PropertyTest {
     @BeforeEach
     public void setUp() throws PlayerNotFoundException {
         GameBoard board = new GameBoard();
-        owner = new Player("TestOwner", board);
-        otherPlayer = new Player("TestPlayer", board);
+        owner = new HumanPlayer("TestOwner", board);
+        otherPlayer = new HumanPlayer("TestPlayer", board);
         Banker banker = new Banker();
         banker.addPlayer(owner);
         banker.addPlayer(otherPlayer);
