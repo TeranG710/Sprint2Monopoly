@@ -41,7 +41,6 @@ public class UtilitySpace extends BoardSpace {
     public void onLanding(Player player) throws PlayerNotFoundException {
         Dice dice = player.getBoard().getDice();
         if (owner == null) {
-            // Needs the UI logic
             System.out.println(player.getName() + " landed on " + getName() + " and bought it for $" + PURCHASE_PRICE);
             banker.withdraw(player,PURCHASE_PRICE);
             owner = player;
@@ -61,7 +60,7 @@ public class UtilitySpace extends BoardSpace {
      * @return Team member(s) responsible: Deborah
      */
     private int calculateRent(Player player) {
-        int numOwnedByOwner = owner.getNumUtilities();
+        int numOwnedByOwner = 1;//owner.getNumUtilities();
         int diceRoll = player.getBoard().getDice().getSum();
 
         if (numOwnedByOwner == 1) {

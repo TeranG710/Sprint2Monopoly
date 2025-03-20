@@ -34,6 +34,28 @@ public abstract class Player {
         this.jailTurns = 0;
     }
 
+
+    /**
+     * Get player's token.
+     *
+     * @return Player's token
+     * Team member(s) responsible: Jamell
+     */
+    public void setTokenToPlayer(Player player) {
+        token.setOwner(player);
+    }
+
+    /**
+     * Get player's token.
+     *
+     * @return Player's token
+     * Team member(s) responsible: Jamell
+     */
+
+    public Token getToken() {
+        return token;
+    }
+
     /**
      * Get player's name.
      *
@@ -42,6 +64,23 @@ public abstract class Player {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Add property to player's list of properties.
+     * Team member(s) responsible: Jamell
+     * */
+    public void addProperty(Property property) {
+        properties.add(property);
+    }
+
+    /**
+     * remove a property off a players list of properties.
+     * @return List of properties
+     * Team member(s) responsible: Jamell
+     */
+    public void removeProperty(Property property) {
+        properties.remove(property);
     }
 
     /**
