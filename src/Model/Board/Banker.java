@@ -9,6 +9,7 @@ package Model.Board;
 
 import Model.Exceptions.InsufficientFundsException;
 import Model.Exceptions.InvalidTransactionException;
+import Model.Exceptions.PlayerAlreadyExistsException;
 import Model.Exceptions.PlayerNotFoundException;
 import Model.Property.Property;
 
@@ -40,9 +41,9 @@ public class Banker {
      * @param player Player to add
      *               Team member(s) responsible: Jamell
      */
-    public void addPlayer(Player player) throws PlayerNotFoundException {
-        if (!playerBalances.containsKey(player)) {
-            throw new PlayerNotFoundException();
+    public void addPlayer(Player player) throws PlayerAlreadyExistsException{
+        if (playerBalances.containsKey(player)) {
+            throw new PlayerAlreadyExistsException();
         }
         playerBalances.put(player, 1500);
     }
