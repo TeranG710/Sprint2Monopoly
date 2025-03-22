@@ -126,7 +126,8 @@ public class Property extends BoardSpace {
      * @return The rent amount
      * Team member(s) responsible: Matt
      */
-    public int calculateRent() {
+    @Override
+    public int calculateRent(Player player) throws PlayerNotFoundException {
         if (isMortgaged) {
             return 0;
         }
@@ -202,7 +203,7 @@ public class Property extends BoardSpace {
                 return true;
             } catch (Exception e) {
                 isMortgaged = true;
-               banker.deposit(owner,mortgageValue);
+                banker.deposit(owner,mortgageValue);
                 return true;
             }
         }
@@ -276,6 +277,7 @@ public class Property extends BoardSpace {
      * @param owner The new owner
      * Team member(s) responsible: Matt
      */
+    @Override
     public void setOwner(Player owner) {
         this.owner = owner;
     }

@@ -22,6 +22,47 @@ public class JustVisitingAndFreeParking extends BoardSpace {
     }
 
     /**
+     * Get the purchase price of the space
+     *
+     * @return The purchase price of the space
+     * Team member(s) responsible: Jamell
+     */
+    @Override
+    public int getPurchasePrice() {
+        return 0; //no purchase price
+    }
+    /**
+     * set owner for this space
+     * Team member(s) responsible: Jamell
+     * */
+    @Override
+    public void setOwner(Player owner) {
+        // No owner for this space
+    }
+
+    /**
+     * Calculate the rent for the space
+     *
+     * @return The rent for the space
+     * Team member(s) responsible: Jamell
+     */
+    @Override
+    public int calculateRent(Player player) {
+        return 0; //no rent
+    }
+
+    /**
+     * Get the owner of the space
+     *
+     * @return The owner of the space
+     * Team member(s) responsible: Jamell
+     */
+    @Override
+    public Player getOwner() {
+        return null; //no owner
+    }
+
+    /**
      * Do nothing when a player lands on the space
      *
      * @param player The player who landed on the space

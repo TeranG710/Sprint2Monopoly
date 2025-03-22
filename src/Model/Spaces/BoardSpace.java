@@ -6,7 +6,6 @@
  * Team Member(s) responsible: Deborah
  * */
 
-
 package Model.Spaces;
 
 import Model.Board.Token;
@@ -16,11 +15,7 @@ import Model.Board.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Abstract base class representing a space on the Monopoly board.
- * This can be extended to create specific types of spaces like properties,
- * railroads, utilities, and special spaces (GO, Jail, etc.)
- */
+
 public abstract class BoardSpace {
     private final String name;
     private final int position;
@@ -88,6 +83,31 @@ public abstract class BoardSpace {
     public int getPosition() {
         return position;
     }
+
+    /**
+     * Get the purchase price of the space
+     *
+     * @return The purchase price
+     * Team member(s) responsible: Jamell
+     */
+    public abstract int getPurchasePrice();
+
+    /**
+     * Set the owner of the space
+     * @param owner The player who owns the space
+     * Team member(s) responsible: Jamell
+     */
+    public abstract void setOwner(Player owner);
+
+    public abstract int calculateRent(Player player) throws PlayerNotFoundException;
+
+    /**
+     * Get the owner of the space
+     *
+     * @return The player who owns the space
+     * Team member(s) responsible: Jamell
+     */
+    public abstract Player getOwner();
 
     /**
      * Abstract method that defines what happens when a player lands on this space

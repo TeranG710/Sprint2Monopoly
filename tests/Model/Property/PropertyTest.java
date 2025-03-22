@@ -53,9 +53,9 @@ public class PropertyTest {
     }
 
     @Test
-    public void testRentCalculationNoHouses() {
+    public void testRentCalculationNoHouses() throws PlayerNotFoundException {
         property.setOwner(owner);
-        assertEquals(50, property.calculateRent());
+        assertEquals(50, property.calculateRent(owner));
     }
 
 //    @Test

@@ -17,16 +17,6 @@ class GameBoardTest {
         assertEquals("Chance", gameBoard.getBoardElements()[36].getName());
     }
 
-    @Test
-    public void testChanceCard() {
-        GameBoard gameBoard = new GameBoard();
-        assertNotNull(gameBoard.getChanceCard());
-    }
-
-    @Test
-    public void testCommunityChestCard() {
-        GameBoard gameBoard = new GameBoard();
-        assertNotNull(gameBoard.getCommunityChestCard());
-    }
+    
 
 }

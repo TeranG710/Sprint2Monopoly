@@ -4,7 +4,7 @@
  * Purpose: This class represents the Community Chest space on the board
  * This class is a subclass of the BoardSpace class
  * This class has a CommunityChestCard object that represents the deck of community chest cards
- * Team Member(s) responsible: Deborah
+ * Team Member(s) responsible: Deborah, Jamell
  * */
 
 
@@ -25,6 +25,47 @@ public class CommunityChestSpace extends BoardSpace {
     public CommunityChestSpace(int position, CommunityChestCard communityChestDeck) {
         super("Community Chest", position);
         this.communityChestDeck = communityChestDeck;
+    }
+
+    /**
+     * Get the purchase price of the space
+     *
+     * @return The purchase price of the space
+     * Team member(s) responsible: Jamell
+     */
+    @Override
+    public int getPurchasePrice() {
+        return 0; //no purchase price
+    }
+    /**
+     * set owner for this space
+     * Team member(s) responsible: Jamell
+     * */
+    @Override
+    public void setOwner(Player owner) {
+        // No owner for this space
+    }
+
+    /**
+     * Calculate the rent for the space
+     *
+     * @return The rent for the space
+     * Team member(s) responsible: Jamell
+     */
+    @Override
+    public int calculateRent(Player player) {
+        return 0; //no rent
+    }
+
+    /**
+     * Get the owner of the space
+     *
+     * @return The owner of the space
+     * Team member(s) responsible: Jamell
+     */
+    @Override
+    public Player getOwner() {
+        return null; //no owner
     }
 
     /**

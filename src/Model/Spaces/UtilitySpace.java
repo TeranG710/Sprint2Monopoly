@@ -20,6 +20,7 @@ public class UtilitySpace extends BoardSpace {
     private Player owner;
     private Banker banker;
 
+
     /**
      * Constructor for UtilitySpace
      *
@@ -32,6 +33,40 @@ public class UtilitySpace extends BoardSpace {
     }
 
     /**
+     * Get the owner of the utility
+     *
+     * @return The player who owns the utility
+     * Team member(s) responsible: Jamell
+     */
+    @Override
+    public int getPurchasePrice() {
+        return PURCHASE_PRICE;
+    }
+
+    /**
+     * Set the owner for the game
+     *
+     * @param owner The banker for the game
+     * Team member(s) responsible: Jamell
+     */
+    @Override
+    public void setOwner(Player owner) {
+        this.owner = owner;
+    }
+
+    /**
+     * Get the owner of the utility
+     *
+     * @return The player who owns the utility
+     * Team member(s) responsible: Jamell
+     */
+    @Override
+    public Player getOwner() {
+        return owner;
+    }
+
+
+    /**
      * Pay rent to the owner if the space is owned, otherwise buy the space
      *
      * @param player The player who landed on the space
@@ -39,9 +74,8 @@ public class UtilitySpace extends BoardSpace {
      */
     @Override
     public void onLanding(Player player) throws PlayerNotFoundException {
-        Dice dice = player.getBoard().getDice();
-        if (owner == null) {
-            System.out.println(player.getName() + " landed on " + getName() + " and bought it for $" + PURCHASE_PRICE);
+        if (owner == null)
+        {banker.sellProperty(this, player);
             banker.withdraw(player,PURCHASE_PRICE);
             owner = player;
         } else if
@@ -57,10 +91,11 @@ public class UtilitySpace extends BoardSpace {
      * Calculate the rent to be paid by the player
      *
      * @param player
-     * @return Team member(s) responsible: Deborah
+     * @return Team member(s) responsible: Deborah, jamell
      */
-    private int calculateRent(Player player) {
-        int numOwnedByOwner = 1;//owner.getNumUtilities();
+    @Override
+    public int calculateRent(Player player) throws PlayerNotFoundException {
+        int numOwnedByOwner = banker.getPlayerProperties(player).size(); //needs to be changed
         int diceRoll = player.getBoard().getDice().getSum();
 
         if (numOwnedByOwner == 1) {

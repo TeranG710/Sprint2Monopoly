@@ -79,7 +79,7 @@ public class Game {
             throw new GameInProgressException();
         }
         if (players.size() < 2) {
-            throw new IllegalStateException("Not enough players to start the game");
+            throw new NotEnoughPlayersException();
         }
         inProgress = true;
         System.out.println("Game started!");
@@ -117,7 +117,7 @@ public class Game {
         if (players.isEmpty()) {
             throw new PlayerNotFoundException();
         }
-        Player winner = players.get(0);
+        Player winner = players.getFirst();
         for (Player player : players) {
             if(banker.getBalance(winner) < banker.getBalance(player)){
                 winner = player;

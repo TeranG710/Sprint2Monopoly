@@ -2,6 +2,7 @@ package Model.BoardTests;
 
 
 import Model.Board.GameBoard;
+import Model.Exceptions.PlayerNotFoundException;
 import Model.Spaces.BoardSpace;
 import Model.Board.Player;
 import Model.Board.Token;
@@ -23,6 +24,26 @@ public class BoardSpaceTest {
 
         public TestBoardSpace(String name, int position) {
             super(name, position);
+        }
+
+        @Override
+        public int getPurchasePrice() {
+            return 0;
+        }
+
+        @Override
+        public void setOwner(Player owner) {
+
+        }
+
+        @Override
+        public int calculateRent(Player player) throws PlayerNotFoundException {
+            return 0;
+        }
+
+        @Override
+        public Player getOwner() {
+            return null;
         }
 
         @Override

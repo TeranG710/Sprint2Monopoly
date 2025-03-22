@@ -22,13 +22,47 @@ public class Railroad extends BoardSpace {
 
     /**
      * Constructor for Railroad
-     *
      * @param name
      * @param position Team member(s) responsible: Deborah
      */
     public Railroad(String name, int position) {
         super(name, position);
         this.owner = null;
+    }
+
+
+    /**
+     * Get the owner of the railroad
+     *
+     * @return The player who owns the railroad
+     * Team member(s) responsible: Deborah
+     */
+    @Override
+    public Player getOwner() {
+        return owner;
+    }
+
+
+    /**
+     * Set the owner for the game
+     *
+     * @param owner The banker for the game
+     * Team member(s) responsible: Deborah
+     */
+    @Override
+    public void setOwner(Player owner) {
+        this.owner = owner;
+    }
+
+    /**
+     * Get the purchase price of the railroad
+     *
+     * @return The purchase price of the railroad
+     * Team member(s) responsible: Deborah
+     */
+    @Override
+    public int getPurchasePrice() {
+        return PURCHASE_PRICE;
     }
 
     /**
@@ -51,7 +85,7 @@ public class Railroad extends BoardSpace {
             }
         } else if (owner != player) {
 
-            int rent = calculateRent();
+            int rent = calculateRent(player);
             if (banker != null) {
                 banker.transferMoney(player, owner, rent);
             } else {
@@ -73,46 +107,18 @@ public class Railroad extends BoardSpace {
         // Do nothing
     }
 
-    /**
-     * Set the owner of the railroad
-     *
-     * @param player The player who owns the railroad
-     * Team member(s) responsible: Deborah
-     */
-    public void SetOwner(Player player) {
-        owner = player;
-    }
-
-    /**
-     * Get the owner of the railroad
-     *
-     * @return The player who owns the railroad
-     * Team member(s) responsible: Deborah
-     */
-    public Player getOwner() {
-        return owner;
-    }
-
-    /**
-     * Get the purchase price of the railroad
-     *
-     * @return The purchase price of the railroad
-     * Team member(s) responsible: Deborah
-     */
-    public int getPurchasePrice() {
-        return PURCHASE_PRICE;
-    }
 
     /**
      * Calculate the rent based on the number of railroads owned by the owner
      * @return rent amount
      * Team member(s) responsible: Deborah
      */
-    private int calculateRent() {
+    @Override
+    public int calculateRent(Player player) {
         if (owner == null) {
             return 0;
         }
-        int numRailroads = 1 ;//owner.getProperties();
+        int numRailroads = 1;
         return BASE_RENT * (int) Math.pow(RENT_MULTIPLIER, numRailroads - 1);
 
     }
