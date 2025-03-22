@@ -1,23 +1,24 @@
+/*
+* CSCI 234: Intro to Software Engineering
+* Group: Giovanny, Jamell, Matt, Deborah
+* Purpose: This class represents a player's on the Monopoly board
+* Team Member(s) responsible: Matt, Jamell
+* */
+
 package Model.Board;
 
 import java.util.ArrayList;
 import java.util.List;
+import Model.Property.Property;
 
-import Model.Property.Property;  // Update import to match package
 
-/**
- * Represents a player in a Monopoly game.
- * This is an abstract class that serves as the base for HumanPlayer and ComputerPlayer.
- * Team member(s) responsible: Matt
- */
 public abstract class Player {
     private final String name;
     private final GameBoard board;
-    private int money;
     private boolean inJail;
     private int jailTurns;
     private Token token;
-    private List<Model.Property.Property> properties = new ArrayList<>();
+
 
     /**
      * Constructor for Player.
@@ -29,24 +30,23 @@ public abstract class Player {
     public Player(String name, GameBoard board) {
         this.name = name;
         this.board = board;
-        this.properties = new ArrayList<>();
         this.inJail = false;
         this.jailTurns = 0;
     }
 
 
     /**
-     * Get player's token.
-     *
+     * set player's token.
      * @return Player's token
      * Team member(s) responsible: Jamell
      */
-    public void setTokenToPlayer(Player player) {
-        token.setOwner(player);
+    public void setTokenToPlayer(String tokenType) {
+        token = new Token(tokenType);
+        token.setOwner(this);
     }
 
     /**
-     * Get player's token.
+     * get player's token.
      *
      * @return Player's token
      * Team member(s) responsible: Jamell
@@ -66,22 +66,6 @@ public abstract class Player {
         return name;
     }
 
-    /**
-     * Add property to player's list of properties.
-     * Team member(s) responsible: Jamell
-     * */
-    public void addProperty(Property property) {
-        properties.add(property);
-    }
-
-    /**
-     * remove a property off a players list of properties.
-     * @return List of properties
-     * Team member(s) responsible: Jamell
-     */
-    public void removeProperty(Property property) {
-        properties.remove(property);
-    }
 
     /**
      * Get the game board.
@@ -139,10 +123,4 @@ public abstract class Player {
         jailTurns = 0;
     }
 
-    /**
-     * Abstract method to define player-specific behavior.
-     * This must be implemented by subclasses.
-     * Team member(s) responsible: Matt
-     */
-    public abstract void takeTurn();
 }

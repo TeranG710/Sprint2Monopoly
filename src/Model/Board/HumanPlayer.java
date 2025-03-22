@@ -1,5 +1,7 @@
 package Model.Board;
 
+import Model.Spaces.BoardSpace;
+
 /**
  * Represents a human player in a Monopoly game.
  * Inherits from the abstract Player class.
@@ -18,13 +20,4 @@ public class HumanPlayer extends Player {
         super(name, board);
     }
 
-    /**
-     * Defines how a human player takes their turn.
-     * Team member(s) responsible: Matt
-     */
-    @Override
-    public void takeTurn() {
-        System.out.println(getName() + " (Human) is taking their turn.");
-        // Implement human-specific turn logic
-    }
 }

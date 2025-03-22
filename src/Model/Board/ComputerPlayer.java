@@ -18,13 +18,4 @@ public class ComputerPlayer extends Player {
         super(name, board);
     }
 
-    /**
-     * Defines how a computer player takes their turn.
-     * Team member(s) responsible: Matt
-     */
-    @Override
-    public void takeTurn() {
-        System.out.println(getName() + " (Computer) is taking their turn.");
-        // Implement AI logic for the computer player's turn
-    }
 }

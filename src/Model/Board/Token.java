@@ -14,7 +14,6 @@ public class Token {
 
     private final String type;
     private int position;
-
     private Player owner;
 
     public Token(String type) {

@@ -11,7 +11,6 @@ package Model.Board;
 
 import Model.Exceptions.PlayerNotFoundException;
 
-
 public class PlayerMovement {
     private final Player player;
     private final GameBoard board;

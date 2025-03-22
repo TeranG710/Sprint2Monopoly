@@ -6,32 +6,50 @@
  */
 
 package Model.Board;
-
 import Model.Exceptions.InsufficientFundsException;
 import Model.Exceptions.InvalidTransactionException;
 import Model.Exceptions.PlayerAlreadyExistsException;
 import Model.Exceptions.PlayerNotFoundException;
 import Model.Property.Property;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Banker {
 
-    private HashMap<Player, Integer> playerBalances;
+    private int availableHouses;
+    private int availableHotels;
     private static final int MAX_HOUSES = 32;
     private static final int MAX_HOTELS = 12;
     private static final int GO_MONEY = 200;
+    private HashMap<Player, ArrayList<Property>> titleDeeds;
+    private HashMap<Player, Integer> playerBalances;
     private ArrayList<Property> availableProperties;
-    private int availableHouses;
-    private int availableHotels;
+
+
 
     public Banker() {
         this.playerBalances = new HashMap<>();
         this.availableProperties = new ArrayList<>();
         this.availableHouses = MAX_HOUSES;
         this.availableHotels = MAX_HOTELS;
+        this.titleDeeds = new HashMap<>();
+    }
+
+
+    /**
+     * Initialize properties at the start of the game
+     * @param properties List of all properties on the board
+     *Team member(s) responsible: Matt
+     */
+    public void initializeProperties(List<Property> properties) {
+        this.availableProperties.addAll(properties);
+    }
+
+    /**
+     * Add a property to the banker's list of available properties
+     * Team member(s) responsible: Jamell
+     */
+    public void addAvailableProperty(Property property) {
+        availableProperties.add(property);
     }
 
     /**
@@ -49,17 +67,18 @@ public class Banker {
     }
 
     /**
-     * removes a player from thr banker's list of players
+     * removes a player from the banker's list of players
      * if player is not in the list, throws PlayerNotFoundException
      *
      * @param player Player to remove
-     *               Team member(s) responsible: Jamell
+     * Team member(s) responsible: Jamell
      */
     public void removePlayer(Player player) throws PlayerNotFoundException {
         if (!playerBalances.containsKey(player)) {
             throw new PlayerNotFoundException();
         }
         playerBalances.remove(player);
+        titleDeeds.remove(player);
     }
 
     /**
@@ -117,6 +136,52 @@ public class Banker {
     }
 
     /**
+     * Add title deeds of a players propertu
+     * Team member(s) responsible: Jamell
+     */
+    public void addTitleDeed(Player player, Property property) {
+        titleDeeds.putIfAbsent(player, new ArrayList<>());
+        titleDeeds.get(player).add(property);
+        property.setOwner(player);
+        availableProperties.remove(property);
+    }
+
+    /**
+     * Remove title deeds of a players property
+     * Team member(s) responsible: Jamell
+     * **/
+    public void removeTitleDeed(Player player, Property property) throws PlayerNotFoundException {
+        if (!titleDeeds.containsKey(player)) {
+            throw new PlayerNotFoundException();
+        }
+        ArrayList<Property> properties = titleDeeds.get(player);
+        properties.remove(property);
+        property.setOwner(null);
+        availableProperties.add(property);
+        if (properties.isEmpty()) {
+            titleDeeds.remove(player);
+        }
+    }
+
+    /**
+     * Get title deeds of a players property
+     * Team member(s) responsible: Jamell
+     */
+    public HashMap<Player, ArrayList<Property>> getTitleDeedsAll() {
+        return titleDeeds;
+    }
+
+    /**
+     * Get title deeds of a player
+     * Team member(s) responsible: Jamell
+     */
+    public ArrayList<Property> getPlayerProperties(Player player) throws PlayerNotFoundException {
+        if (!titleDeeds.containsKey(player)) {
+            throw new PlayerNotFoundException();
+        }
+        return new ArrayList<>(titleDeeds.get(player));
+    }
+    /**
      * Transfer money from one player to another
      * @param from   The player to transfer from
      * @param to     The player to transfer to
@@ -124,7 +189,7 @@ public class Banker {
      * @throws PlayerNotFoundException     if player is not found
      * @throws InvalidTransactionException if transaction is invalid
      * @throws InsufficientFundsException  if player has insufficient funds
-     *  Team member(s) responsible: Matt, Jamell
+     * Team member(s) responsible: Matt, Jamell
      */
     public void transferMoney(Player from, Player to, int amount) throws PlayerNotFoundException {
         if (amount < 0) {
@@ -136,6 +201,7 @@ public class Banker {
         withdraw(from, amount);
         deposit(to, amount);
     }
+
 
     /**
      * Pay GO money to a player
@@ -154,7 +220,7 @@ public class Banker {
      * @param player   The player buying the property
      * @throws PlayerNotFoundException    if player is not found
      * @throws InsufficientFundsException if player has insufficient funds
-     *                                    Team member(s) responsible: Matt
+     * Team member(s) responsible: Matt
      */
     public void sellProperty(Property property, Player player) throws PlayerNotFoundException {
         if (!availableProperties.contains(property)) {
@@ -163,25 +229,24 @@ public class Banker {
         int price = property.getPurchasePrice();
         withdraw(player, price);
         availableProperties.remove(property);
-        //player.addProperty(property);
         property.setOwner(player);
+        addTitleDeed(player, property);
     }
 
     /**
      * Buy a property back from a player (for mortgaging)
-     *
      * @param property The property to buy
      * @param player   The player selling the property
      * @throws PlayerNotFoundException if player is not found
-     *                                 Team member(s) responsible: Matt
+     * Team member(s) responsible: Matt
      */
     public void buyBackProperty(Property property, Player player) throws PlayerNotFoundException {
         if (property.getOwner() != player) {
             throw new InvalidTransactionException();
         }
-        //int mortgageValue = property.getMortgageValue();
-        //deposit(player, mortgageValue);
-        //property.setMortgaged(true);
+        int mortgageValue = property.getMortgageValue();
+        deposit(player, mortgageValue);
+        property.setMortgaged(true);
     }
 
     /**
@@ -200,8 +265,8 @@ public class Banker {
         if (property.getOwner() != player) {
             throw new InvalidTransactionException();
         }
-        // int housePrice = property.getHousePrice();
-        // withdraw(player, housePrice);
+        int housePrice = property.getHousePrice();
+        withdraw(player, housePrice);
         property.addHouse();
         availableHouses--;
     }
@@ -213,7 +278,7 @@ public class Banker {
      * @param player   The player buying the hotel
      * @throws PlayerNotFoundException    if player is not found
      * @throws InsufficientFundsException if player has insufficient funds
-     *                                    Team member(s) responsible: Matt
+     * Team member(s) responsible: Matt
      */
     public void sellHotel(Property property, Player player) throws PlayerNotFoundException {
         if (availableHotels <= 0) {
@@ -226,8 +291,8 @@ public class Banker {
             throw new InvalidTransactionException();
         }
 
-        //int hotelPrice = property.getHousePrice();
-        //withdraw(player, hotelPrice);
+        int hotelPrice = property.getHousePrice();
+        withdraw(player, hotelPrice);
         property.addHotel();
         availableHouses += 4;
         availableHotels--;
@@ -245,9 +310,9 @@ public class Banker {
         if (property.getOwner() != player || property.getNumHouses() <= 0) {
             throw new InvalidTransactionException();
         }
-        //int housePrice = property.getHousePrice()
-        //deposit(player, housePrice);
-        //property.removeHouse();
+        int housePrice = property.getHousePrice();
+        deposit(player, housePrice);
+        property.removeHouse();
         availableHouses++;
     }
 
@@ -265,9 +330,9 @@ public class Banker {
         if (availableHouses < 4) {
             throw new InvalidTransactionException();
         }
-        //int hotelPrice = property.getHousePrice() / 2;
-        //deposit(player, hotelPrice);
-        //property.removeHotel();
+        int hotelPrice = property.getHousePrice() / 2;
+        deposit(player, hotelPrice);
+        property.removeHotel();
         availableHotels++;
         availableHouses -= 4;
     }
@@ -308,13 +373,6 @@ public class Banker {
         return availableHotels;
     }
 
-    /**
-     * Initialize properties at the start of the game
-     * @param properties List of all properties on the board
-     *Team member(s) responsible: Matt
-     */
-    public void initializeProperties(List<Property> properties) {
-        this.availableProperties.addAll(properties);
-    }
+
 }
 

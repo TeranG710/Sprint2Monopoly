@@ -64,7 +64,8 @@ public class Property extends BoardSpace {
      * Team member(s) responsible: Matt
      */
     private void setHousePriceByColor() {
-        switch (color) {
+        switch (color)
+        {
             case BROWN:
             case LIGHT_BLUE:
                 this.housePrice = 50;
@@ -93,55 +94,30 @@ public class Property extends BoardSpace {
      */
     @Override
     public void onLanding(Player player) throws PlayerNotFoundException {
-        if (owner == null) {
+        if (owner == null)
+        {
             banker.sellProperty(this, player);
-        } else if (owner != player && !isMortgaged) {
+        }
+        else if (owner != player && !isMortgaged) {
             banker.collectRent(this, player);
         }
     }
 
-    /**
-     * Defines what happens when a player passes over this property
-     * @param player The player who passed over the space
-     * Team member(s) responsible: Matt
-     */
-    @Override
-    public void onPassing(Player player) {
-    }
 
     /**
      * Offers the property for purchase to the given player
      * @param player The player who has the option to buy
      * Team member(s) responsible: Matt
      */
-    private void offerPurchase(Player player) throws PlayerNotFoundException {
+    public void offerPurchase(Property property, Player player) throws PlayerNotFoundException {
         try {
-            banker.sellProperty(this, player);
+            banker.sellProperty(property, player);
         } catch (Exception e) {
             if (banker.getBalance(player) > purchasePrice) {
-                banker.withdraw(player,purchasePrice);
-                player.addProperty(this);
                 this.owner = player;
+                banker.withdraw(player,purchasePrice);
+                banker.addTitleDeed(player,property);
             }
-        }
-    }
-
-    /**
-     * Calculates and collects rent from the player
-     * @param player The player who must pay rent
-     * Team member(s) responsible: Matt
-     */
-    private void collectRent(Player player) throws PlayerNotFoundException {
-        if (owner == null || owner == player || isMortgaged) {
-            return;
-        }
-
-        try {
-            banker.collectRent(this, player);
-        } catch (Exception e) {
-            int rentAmount = calculateRent();
-            banker.withdraw(player,rentAmount);
-            banker.deposit(owner,rentAmount);
         }
     }
 
@@ -154,7 +130,6 @@ public class Property extends BoardSpace {
         if (isMortgaged) {
             return 0;
         }
-
         int rent;
         if (hasHotel) {
             rent = hotelRent;
@@ -385,4 +360,35 @@ public class Property extends BoardSpace {
     public int getHousePrice() {
         return housePrice;
     }
+
+    /**
+     * Defines what happens when a player passes over this property
+     * @param player The player who passed over the space
+     * Team member(s) responsible: Matt
+     */
+    @Override
+    public void onPassing(Player player) {
+        // do nothing
+    }
+
+    @Override
+    public String toString() {
+        return "Property{" +
+                "name='" + getName() + '\'' +
+                ", position=" + getPosition() +
+                ", purchasePrice=" + purchasePrice +
+                ", baseRent=" + baseRent +
+                ", houseRents=" + houseRents +
+                ", hotelRent=" + hotelRent +
+                ", mortgageValue=" + mortgageValue +
+                ", color=" + color +
+                ", colorGroup=" + colorGroup +
+                ", owner=" + owner +
+                ", isMortgaged=" + isMortgaged +
+                ", numHouses=" + numHouses +
+                ", hasHotel=" + hasHotel +
+                ", housePrice=" + housePrice +
+                '}';
+    }
+
 }

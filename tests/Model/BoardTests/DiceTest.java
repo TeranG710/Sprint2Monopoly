@@ -17,7 +17,7 @@ public class DiceTest {
 
     @Test
     public void testRollWithinValidRange() {
-        for (int i = 0; i < 100; i++) { // Roll multiple times to check randomness
+        for (int i = 0; i < 100; i++) {
             dice.roll();
             assertTrue(dice.getDie1() >= 1 && dice.getDie1() <= 6, "Die1 is out of range");
             assertTrue(dice.getDie2() >= 1 && dice.getDie2() <= 6, "Die2 is out of range");
@@ -53,9 +53,9 @@ public class DiceTest {
             do {
                 dice.roll();
             } while
-            (dice.getDie1() != dice.getDie2()); // Ensure we roll a double
+            (dice.getDie1() != dice.getDie2());
             doubleCount++;
-            dice.isDouble(); // Increment the double counter
+            dice.isDouble();
         }
         assertEquals(3, doubleCount, "Should have rolled three doubles");
         assertTrue(dice.goToJail(), "Player should go to jail after three doubles");

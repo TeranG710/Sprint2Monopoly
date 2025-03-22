@@ -55,6 +55,26 @@ public class GameBoard {
     }
 
     /**
+     * Gets the chance card object
+     *
+     * @return chanceCard
+     * Team member(s) responsible: Deborah
+     */
+    public ChanceCard getChanceCard() {
+        return chanceCard;
+    }
+
+    /**
+     * Gets the community chest card object
+     *
+     * @return communityChestCard
+     * Team member(s) responsible: Deborah
+     */
+    public CommunityChestCard getCommunityChestCard() {
+        return communityChestCard;
+    }
+
+    /**
      * Gets the dice object
      *
      * @return dice
@@ -135,7 +155,4 @@ public class GameBoard {
         boardElements[38] = new TaxSpace("Luxury Tax", 38);
         boardElements[39] = new Property("Boardwalk", 39, 400, 50, new int[]{200, 600, 1400, 1700}, 2000, 200, PropertyColor.DARK_BLUE, blueGroup);
     }
-
-
-
 }
