@@ -14,6 +14,8 @@ import Model.Board.Player;
 import Model.Cards.ChanceCard;
 import Model.Cards.CommunityChestCard;
 import Model.Exceptions.*;
+import Model.Exceptions.IllegalStateException;
+
 import java.util.ArrayList;
 
 public class Game {
@@ -33,6 +35,38 @@ public class Game {
         this.players = new ArrayList<>();
         this.inProgress = false;
     }
+    public GameBoard getBoard() {
+        return board;
+    }
+    /**
+     * This method is used to check if the game is in progress.
+     * Team member(s) responsible: Deborah
+     */
+    public boolean gameInProgress() {
+        return inProgress;
+    }
+
+    /**
+     * This method is used to add a player to the game.
+     * Team member(s) responsible: Jamell and Deborah
+     */
+    public void addPlayer(Player newPlayer) throws PlayerAlreadyExistsException {
+        if (inProgress) {
+            throw new GameInProgressException();
+        }
+        if (players.size() >= 4) {
+            throw new MaximumPlayerReachedException();
+        }
+        if (players.contains(newPlayer)) {
+            throw new PlayerAlreadyExistsException();
+        }
+        players.add(newPlayer);
+        banker.addPlayer(newPlayer);
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
 
 
     /**
@@ -41,19 +75,16 @@ public class Game {
      * Team member(s) responsible: Giovanny and Deborah
      */
     public void startGame() {
-        if (gameInProgress()) {
+        if (inProgress) {
             throw new GameInProgressException();
         }
+        if (players.size() < 2) {
+            throw new IllegalStateException("Not enough players to start the game");
+        }
         inProgress = true;
+        System.out.println("Game started!");
     }
 
-    /**
-     * This method is used to check if the game is in progress.
-     * Team member(s) responsible: Deborah
-     */
-    public boolean gameInProgress() {
-        return inProgress;
-    }
 
     /**
      * This method is used to output the game state.
@@ -67,29 +98,9 @@ public class Game {
         }
         System.out.println("Players: ");
         for (Player p : players) {
-            try {
-                System.out.println("Player: " + p.getName() + " Balance: $" + banker.getBalance(p));
-            } catch (PlayerNotFoundException e) {
-                System.out.println("Player: " + p.getName() + " Balance: Not found");
-            }
-        }
-    }
+            System.out.println("Player: " + p.getName() + " Balance: $" + banker.getBalance(p));
 
-    /**
-     * This method is used to add a player to the game.
-     * Team member(s) responsible: Jamell and Deborah
-     */
-    public void addPlayer(Player newPlayer) throws PlayerAlreadyExistsException {
-        if (!gameInProgress()) {
-            throw new GameNotInProgressException();
         }
-        if (players.size() >= 4) {
-            throw new MaximumPlayerReachedException();
-        }
-        if (players.contains(newPlayer)) {
-            throw new PlayerAlreadyExistsException();
-        }
-        players.add(newPlayer);
     }
 
     /**
@@ -106,7 +117,7 @@ public class Game {
         if (players.isEmpty()) {
             throw new PlayerNotFoundException();
         }
-        Player winner = players.getFirst();
+        Player winner = players.get(0);
         for (Player player : players) {
             if(banker.getBalance(winner) < banker.getBalance(player)){
                 winner = player;
@@ -115,19 +126,24 @@ public class Game {
         return winner;
     }
 
+    /**
+     * This method is used to reset the game.
+     * If the game is not in progress, it throws a GameNotInProgressException.
+     * Team member(s) responsible: Jamell
+     */
     public void resetGame() {
         if (!gameInProgress()) {
             throw new GameNotInProgressException();
         }
-
+        players.clear();
+        inProgress = false;
     }
-
 
     /**
      * This method is used to end the game.
      * If the game is ended early, it throws a GameEndedEarlyException.
      * @throws PlayerNotFoundException
-     * Teamm member(s) responsible: Deborah
+     * Team member(s) responsible: Deborah
      */
     public void endGame() throws PlayerNotFoundException {
         inProgress = false;

@@ -21,9 +21,10 @@ public class CommunityChestDatabaseTest {
         ArrayList<String> deckTest = new ArrayList<>();
         deckTest.add("Advance to Go (Collect $200)");
         deckTest.add("You inherit $100");
-        assertEquals(deckTest.getFirst(), database.getCardDeck().getFirst());
-        assertEquals(deckTest.getLast(), database.getCardDeck().getLast());
+        assertEquals(deckTest.get(0), database.getCardDeck().get(0));
+        assertEquals(deckTest.get(deckTest.size() - 1), database.getCardDeck().get(database.getCardDeck().size() - 1));
         assertEquals(16, database.getCardDeck().size());
+
     }
 
 }

@@ -21,9 +21,8 @@ public class ChanceCardDatabaseTest {
         ArrayList<String> testDescriptions = new ArrayList<>();
         testDescriptions.add("Advance to Boardwalk.");
         testDescriptions.add("Your building loan matures. Collect $150.");
-        assertEquals(testDescriptions.getFirst(), chanceCardDatabase.getCardDeck().getFirst());
-        assertEquals(testDescriptions.getLast(), chanceCardDatabase.getCardDeck().getLast());
-        assertEquals(16, chanceCardDatabase.getCardDeck().size());
+        assertEquals(testDescriptions.get(0), chanceCardDatabase.getCardDeck().get(0));
+        assertEquals(testDescriptions.get(testDescriptions.size() - 1), chanceCardDatabase.getCardDeck().get(chanceCardDatabase.getCardDeck().size() - 1));        assertEquals(16, chanceCardDatabase.getCardDeck().size());
     }
 
 

@@ -9,5 +9,8 @@
         <module name="MonopolyProject" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="MonopolyProject" target="20" />
+    </bytecodeTargetLevel>
   </component>
 </project>
