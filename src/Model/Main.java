@@ -22,10 +22,6 @@ import java.util.Set;
 public class Main {
     public static void main(String[] args) throws PlayerNotFoundException {
 
-        GameBoard gameBoard = new GameBoard();
-        System.out.println(gameBoard.getBoardElements());
-
-
 
         System.out.println("**Player and token demo sprint 1**");
         Player humanPlayer = new HumanPlayer("Alice", new GameBoard());

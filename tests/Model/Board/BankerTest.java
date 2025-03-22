@@ -154,11 +154,11 @@ public class BankerTest {
         Property property = new Property("Boardwalk", 39, 400,
                 50, new int[]{200, 600, 1400, 1700}, 2000,
                 200, PropertyColor.DARK_BLUE, colorGroup);
-        banker.addProperty(property);
+        banker.addAvailableProperty(property);
         banker.sellProperty(property, player);
         assertEquals(1, banker.getPlayerProperties(player).size());
-
-
     }
+
+
 
 }

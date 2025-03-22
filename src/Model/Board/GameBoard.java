@@ -155,4 +155,22 @@ public class GameBoard {
         boardElements[38] = new TaxSpace("Luxury Tax", 38);
         boardElements[39] = new Property("Boardwalk", 39, 400, 50, new int[]{200, 600, 1400, 1700}, 2000, 200, PropertyColor.DARK_BLUE, blueGroup);
     }
+
+    @Override
+    public String toString() {
+        return "GameBoard{" +
+                "boardElements=" + boardElements +
+                ", dice=" + dice +
+                ", brownGroup=" + brownGroup +
+                ", lightBlueGroup=" + lightBlueGroup +
+                ", pinkGroup=" + pinkGroup +
+                ", orangeGroup=" + orangeGroup +
+                ", redGroup=" + redGroup +
+                ", yellowGroup=" + yellowGroup +
+                ", greenGroup=" + greenGroup +
+                ", blueGroup=" + blueGroup +
+                ", chanceCard=" + chanceCard +
+                ", communityChestCard=" + communityChestCard +
+                '}';
+    }
 }

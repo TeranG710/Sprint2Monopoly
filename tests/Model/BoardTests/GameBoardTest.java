@@ -2,10 +2,10 @@ package Model.BoardTests;
 
 import Model.Board.GameBoard;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameBoardTest {
+
     @Test
     public void testBoardInitialization() {
         GameBoard gameBoard = new GameBoard();
@@ -16,4 +16,17 @@ class GameBoardTest {
         assertEquals("Jail / Just Visiting", gameBoard.getBoardElements()[10].getName());
         assertEquals("Chance", gameBoard.getBoardElements()[36].getName());
     }
+
+    @Test
+    public void testChanceCard() {
+        GameBoard gameBoard = new GameBoard();
+        assertNotNull(gameBoard.getChanceCard());
+    }
+
+    @Test
+    public void testCommunityChestCard() {
+        GameBoard gameBoard = new GameBoard();
+        assertNotNull(gameBoard.getCommunityChestCard());
+    }
+
 }
