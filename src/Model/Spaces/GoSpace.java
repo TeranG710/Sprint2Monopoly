@@ -15,7 +15,7 @@ import Model.Board.Player;
 public class GoSpace extends BoardSpace {
 
     private static final int GO_MONEY = 200;
-    Banker banker;
+    private Banker banker;
 
     /**
      * Constructor for GoSpace
