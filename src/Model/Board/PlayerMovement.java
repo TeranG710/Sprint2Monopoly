@@ -9,13 +9,13 @@
 
 package Model.Board;
 import Model.Spaces.GoSpace;
-
 import Model.Exceptions.PlayerNotFoundException;
 
 public class PlayerMovement {
     private final Player player;
-    private final GameBoard board;
-    private final Banker banker;
+    private GameBoard board;
+    private Banker banker;
+    private Token token;
 
     /**
      * Constructor for PlayerMovement
@@ -30,6 +30,10 @@ public class PlayerMovement {
         this.banker = banker;
     }
 
+    public int getPosition() {
+        return token.getPosition();
+    }
+
 
     /**
      * Moves the player based on the roll result.
@@ -40,19 +44,22 @@ public class PlayerMovement {
      * Team member(s) responsible: Deborah
      */
     public void movePlayer(int rollResult) throws PlayerNotFoundException {
-        Token token = player.getToken();
+
+        token = player.getToken();
         int currentPosition = token.getPosition();
         int newPosition = (currentPosition + rollResult) % 40;
-
-        if (newPosition < currentPosition || newPosition != 0) {
+        boolean passedGo = currentPosition + rollResult >= 40;
+        if (passedGo) {
             if (board.getBoardElements()[0] instanceof GoSpace goSpace) {
                 goSpace.onPassing(player);
+                banker.payGoMoney(player);
                 System.out.println(player.getName() + " passes Go and collects $200");
             }
         }
         token.setPosition(newPosition);
         System.out.println(player.getName() + " moves to space " + newPosition);
         board.getBoardElements()[newPosition].onLanding(player);
+
     }
 
 }

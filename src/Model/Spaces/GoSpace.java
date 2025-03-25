@@ -72,7 +72,7 @@ public class GoSpace extends BoardSpace {
      * Give the player $200 when they land on the Go space
      *
      * @param player The player who landed on the space
-     *               Team member(s) responsible: Deborah
+     * Team member(s) responsible: Deborah
      */
     @Override
     public void onLanding(Player player) throws PlayerNotFoundException {

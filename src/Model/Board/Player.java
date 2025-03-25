@@ -41,7 +41,9 @@ public abstract class Player {
      * Team member(s) responsible: Jamell
      */
     public void setTokenToPlayer(String tokenType) {
-        token = new Token(tokenType);
+        if (this.token == null) {
+            this.token = new Token(tokenType);
+        }
         token.setOwner(this);
     }
 

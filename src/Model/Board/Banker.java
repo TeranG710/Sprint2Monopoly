@@ -40,7 +40,7 @@ public class Banker {
      * Initialize properties at the start of the game
      *
      * @param properties List of all properties on the board
-     *                   Team member(s) responsible: Matt, Jamell
+     * Team member(s) responsible: Matt, Jamell
      */
     public void initializeProperties(List<BoardSpace> properties) {
         this.availableProperties.addAll(properties);
@@ -59,7 +59,7 @@ public class Banker {
      * if player is already in the list, throws PlayerNotFoundException
      *
      * @param player Player to add
-     *               Team member(s) responsible: Jamell
+     * Team member(s) responsible: Jamell
      */
     public void addPlayer(Player player) throws PlayerAlreadyExistsException {
         if (playerBalances.containsKey(player)) {
@@ -104,7 +104,7 @@ public class Banker {
      *
      * @param player Player to deposit money into
      * @param amount Amount to deposit
-     *               Team member(s) responsible: Jamell
+     * Team member(s) responsible: Jamell
      */
     public void deposit(Player player, int amount) throws PlayerNotFoundException {
         if (!playerBalances.containsKey(player)) {

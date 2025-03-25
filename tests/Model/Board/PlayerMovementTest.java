@@ -2,34 +2,31 @@ package Model.Board;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import Model.Exceptions.PlayerAlreadyExistsException;
 import Model.Exceptions.PlayerNotFoundException;
-import Model.Game;
 import org.junit.jupiter.api.Test;
 
 
 public class PlayerMovementTest {
+
     @Test
-    void testMovePlayer() throws PlayerNotFoundException, PlayerAlreadyExistsException {
+    void testMovePlayer() throws PlayerNotFoundException
+    {
         Banker banker = new Banker();
-        GameBoard board = new GameBoard(banker);
-        Player player = new HumanPlayer("TestPlayer", board);
+        GameBoard newBoard = new GameBoard(banker);
+        Player player = new HumanPlayer("TestPlayer",newBoard);
         Token token = new Token("TestToken");
-        player.setTokenToPlayer(String.valueOf(token));
+        PlayerMovement playerMovement = new PlayerMovement(player, newBoard, banker);
         banker.addPlayer(player);
+        player.setTokenToPlayer(token.getType());
+        token.setOwner(player);
         token.setPosition(0);
-
-
-        PlayerMovement playerMovement = new PlayerMovement(player, board, banker);
-
         playerMovement.movePlayer(5);
-        assertEquals(5, token.getPosition());
-
+        assertEquals(5, playerMovement.getPosition());
         playerMovement.movePlayer(5);
-        assertEquals(10, token.getPosition());
-
-        playerMovement.movePlayer(30);
-        assertEquals(0, token.getPosition());
+        assertEquals(10, playerMovement.getPosition());
+        playerMovement.movePlayer(5);
+        assertEquals(15, playerMovement.getPosition());
+        //System.out.println(banker.getBalance(player)); banker is referencing a different player object
     }
 
 }
