@@ -18,6 +18,7 @@ public abstract class Player {
     private boolean inJail;
     private int jailTurns;
     private Token token;
+    private int getOutOfJailFreeCards = 0;
 
 
     /**
@@ -37,7 +38,6 @@ public abstract class Player {
 
     /**
      * set player's token.
-     * @return Player's token
      * Team member(s) responsible: Jamell
      */
     public void setTokenToPlayer(String tokenType) {
@@ -119,8 +119,24 @@ public abstract class Player {
      * Reset the number of turns in jail to 0.
      * Team member(s) responsible: Matt
      */
+    public void addGetOutOfJailFreeCard() {
+        getOutOfJailFreeCards++;
+    }
     public void resetTurnsInJail() {
         jailTurns = 0;
     }
 
+    public boolean hasGetOutOfJailFreeCard() {
+        return getOutOfJailFreeCards > 0;
+    }
+    public boolean useGetOutOfJailFreeCard() {
+        if (getOutOfJailFreeCards > 0) {
+            getOutOfJailFreeCards--;
+            return true;
+        }
+        return false;
+    }
+    public int getGetOutOfJailFreeCard() {
+        return getOutOfJailFreeCards;
+    }
 }
