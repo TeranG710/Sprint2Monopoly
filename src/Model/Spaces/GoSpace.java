@@ -21,8 +21,9 @@ public class GoSpace extends BoardSpace {
      * Constructor for GoSpace
      * Team member(s) responsible: Deborah
      */
-    public GoSpace() {
+    public GoSpace(Banker banker) {
         super("Go", 0);
+        this.banker = banker;
     }
 
     /**

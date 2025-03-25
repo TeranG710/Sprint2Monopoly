@@ -34,18 +34,21 @@ public class GameBoard {
     private ColorGroup blueGroup;
     private ChanceCard chanceCard;
     private CommunityChestCard communityChestCard;
-    private Banker banker;
+    private final Banker banker;
 
     /**
      * Initializes the game board with all the spaces.
      * Team member(s) responsible: Deborah
      */
-    public GameBoard() {
-        banker = new Banker();
-        boardElements = new BoardSpace[NUM_SPACES];
+    public GameBoard(Banker banker) {
+        this.banker = new Banker();
+        this.boardElements = new BoardSpace[NUM_SPACES];
         this.dice = new Dice();
         initializeColorGroups();
         initializeBoard(chanceCard, communityChestCard);
+    }
+    public GameBoard() {
+        this(new Banker());
     }
 
     /**
@@ -125,7 +128,7 @@ public class GameBoard {
      * Team member(s) responsible: Deborah
      */
     private void initializeBoard(ChanceCard chanceCard, CommunityChestCard communityChestCard) {
-        boardElements[0] = new GoSpace();
+        boardElements[0] = new GoSpace(banker);
         boardElements[1] = new Property("Mediterranean Avenue", 1, 60, 2, new int[]{10, 30, 90, 160}, 250, 30, PropertyColor.BROWN, brownGroup);
         boardElements[2] = new CommunityChestSpace(2, communityChestCard);
         boardElements[3] = new Property("Baltic Avenue", 3, 60, 4, new int[]{20, 60, 180, 320}, 450, 30, PropertyColor.BROWN, brownGroup);
