@@ -40,64 +40,19 @@ public class PlayerMovement {
      * Team member(s) responsible: Deborah
      */
     public void movePlayer(int rollResult) throws PlayerNotFoundException {
-        if (player.isInJail()) {
-            if (!handleJailTurn()) {
-                return;
-            }
-        }
         Token token = player.getToken();
         int currentPosition = token.getPosition();
         int newPosition = (currentPosition + rollResult) % 40;
 
         if (newPosition < currentPosition || newPosition != 0) {
-            if (board.getBoardElements()[0] instanceof GoSpace) {
-                GoSpace goSpace = (GoSpace) board.getBoardElements()[0];
+            if (board.getBoardElements()[0] instanceof GoSpace goSpace) {
                 goSpace.onPassing(player);
-
-                banker.deposit(player, 200);
+                System.out.println(player.getName() + " passes Go and collects $200");
             }
         }
         token.setPosition(newPosition);
         System.out.println(player.getName() + " moves to space " + newPosition);
-
         board.getBoardElements()[newPosition].onLanding(player);
     }
 
-
-    /**
-     * Handles the player's turn while in jail.
-     * Rolls the dice and checks if the player rolls doubles to get out of jail.
-     * If the player has been in jail for 3 turns, they pay a fine to get out.
-     *
-     * @return true if the player gets out of jail, false otherwise
-     * @throws PlayerNotFoundException if the player is not found
-     *   Team member(s) responsible: Deborah
-     */
-    private boolean handleJailTurn() throws PlayerNotFoundException {
-        Dice dice = board.getDice();
-        dice.roll();
-        System.out.println(player.getName() + " rolled a " + dice.getDie1() + " and a " + dice.getDie2());
-        if (dice.isDouble()) {
-            System.out.println(player.getName() + " rolled doubles and is now out of jail!");
-            player.setInJail(false);
-            return true;
-        }
-
-        player.incrementTurnsInJail();
-
-        if (player.getTurnsInJail() >= 3) {
-            if (banker.getBalance(player) < 50) {
-                System.out.println(player.getName() + " does not have enough money to pay the $50 fine and is now out of jail!");
-                player.setInJail(false);
-                return true;
-            }
-            System.out.println(player.getName() + " has been in jail for 3 turns and is now out of jail!");
-            banker.withdraw(player,50);
-            player.setInJail(false);
-            player.resetTurnsInJail();
-            return true;
-        }
-        System.out.println(player.getName() + " has been in jail for " + player.getTurnsInJail() + " turns");
-        return false;
-    }
 }

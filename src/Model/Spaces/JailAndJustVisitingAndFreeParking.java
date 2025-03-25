@@ -16,7 +16,7 @@ import Model.Exceptions.PlayerNotFoundException;
 public class JailAndJustVisitingAndFreeParking extends BoardSpace {
     private static final int JAIL_FINE = 50;
     private static final int MAX_JAIL_TURNS = 3;
-    private final Banker banker;
+    private Banker banker;
     /**
      * Constructor for JustVisitingAndFreeParking
      *
@@ -77,7 +77,16 @@ public class JailAndJustVisitingAndFreeParking extends BoardSpace {
      */
     @Override
     public void onLanding(Player player) {
-        System.out.println(player.getName() + " is just visiting jail");
+        if (player.isInJail()) {
+            try {
+                handleJailStay(player, player.getBoard().getDice());
+            } catch (PlayerNotFoundException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        } else {
+            System.out.println(player.getName() + " is just visiting jail");
+
+        }
     }
 
     private boolean handleJailStay(Player player, Dice dice) throws PlayerNotFoundException {

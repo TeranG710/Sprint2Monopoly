@@ -11,35 +11,22 @@ public class PlayerMovementTest {
     @Test
     void testMovePlayer() throws PlayerNotFoundException {
         GameBoard board = new GameBoard();
+        Banker banker = new Banker();
         Player player = new HumanPlayer("TestPlayer", board);
-        Token token = player.getToken();
+        Token token = new Token("TestToken");
+        token = player.getToken();
         token.setPosition(0);
-        PlayerMovement.movePlayer(5);
+
+        PlayerMovement playerMovement = new PlayerMovement(player, board, banker);
+
+        playerMovement.movePlayer(5);
         assertEquals(5, token.getPosition());
-        PlayerMovement.movePlayer(5);
+
+        playerMovement.movePlayer(5);
         assertEquals(10, token.getPosition());
-        PlayerMovement.movePlayer(30);
+
+        playerMovement.movePlayer(30);
         assertEquals(0, token.getPosition());
     }
-    @Test
-    void testHandleJailTurn() throws PlayerNotFoundException {
-        GameBoard board = new GameBoard();
-        Player player = new HumanPlayer("TestPlayer", board);
-        Token token = player.getToken();
-        token.setPosition(10);
-        player.setInJail(true);
-        PlayerMovement.movePlayer(5);
-        assertEquals(10, token.getPosition());
-        PlayerMovement.handleJailTurn();
-        assertEquals(10, token.getPosition());
-        PlayerMovement.handleJailTurn();
-        assertEquals(10, token.getPosition());
-        PlayerMovement.handleJailTurn();
-        assertEquals(10, token.getPosition());
-        player.setInJail(false);
-        PlayerMovement.handleJailTurn();
-        assertEquals(10, token.getPosition());
-    }
-
 
 }
