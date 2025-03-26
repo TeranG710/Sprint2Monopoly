@@ -40,10 +40,8 @@ public abstract class Player {
      * set player's token.
      * Team member(s) responsible: Jamell
      */
-    public void setTokenToPlayer(String tokenType) {
-        if (this.token == null) {
-            this.token = new Token(tokenType);
-        }
+    public void setTokenToPlayer(Token type ) {
+        this.token = type;
         token.setOwner(this);
     }
 
@@ -124,13 +122,31 @@ public abstract class Player {
     public void addGetOutOfJailFreeCard() {
         getOutOfJailFreeCards++;
     }
+
+    /**
+     * Reset the number of turns in jail to 0.
+     * Team member(s) responsible: Deborah
+     */
     public void resetTurnsInJail() {
         jailTurns = 0;
     }
 
+    /**
+     * Returns true if the player has a get out of jail free card.
+     *
+     * @return Number of get out of jail free cards
+     * Team member(s) responsible: Deborah
+     */
     public boolean hasGetOutOfJailFreeCard() {
         return getOutOfJailFreeCards > 0;
     }
+
+    /**
+     * Returns true if used get out of jail free card.
+     *
+     * @return Number of get out of jail free cards
+     * Team member(s) responsible: Deborah
+     */
     public boolean useGetOutOfJailFreeCard() {
         if (getOutOfJailFreeCards > 0) {
             getOutOfJailFreeCards--;
@@ -138,6 +154,13 @@ public abstract class Player {
         }
         return false;
     }
+
+    /**
+     * Get the number of get out of jail free cards.
+     *
+     * @return Number of get out of jail free cards
+     * Team member(s) responsible: Deborah
+     */
     public int getGetOutOfJailFreeCard() {
         return getOutOfJailFreeCards;
     }

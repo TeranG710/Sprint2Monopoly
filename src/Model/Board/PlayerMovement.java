@@ -24,10 +24,11 @@ public class PlayerMovement {
      * @param board  The game board
      * Team member(s) responsible: Deborah
      */
-    public PlayerMovement(Player player, GameBoard board, Banker banker) {
+    public PlayerMovement(Player player, GameBoard board, Banker banker, Token token) {
         this.player = player;
         this.board = board;
         this.banker = banker;
+        this.token = token;
     }
 
     public int getPosition() {
@@ -44,8 +45,7 @@ public class PlayerMovement {
      * Team member(s) responsible: Deborah
      */
     public void movePlayer(int rollResult) throws PlayerNotFoundException {
-
-        token = player.getToken();
+        token.setOwner(player);
         int currentPosition = token.getPosition();
         int newPosition = (currentPosition + rollResult) % 40;
         boolean passedGo = currentPosition + rollResult >= 40;

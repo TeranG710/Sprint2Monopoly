@@ -1,3 +1,10 @@
+/*
+ * CSCI 234: Intro to Software Engineering
+ * Group: Giovanny, Jamell, Matt, Deborah
+ * Purpose: This class is responsible for rolling the dice
+ * and keeping track of the dice values
+ * Team Member(s) responsible: Jamell
+ * */
 package Model.Board;
 
 /**
@@ -12,10 +19,10 @@ public class ComputerPlayer extends Player {
      *
      * @param name  Player's name
      * @param board The game board
-     * Team member(s) responsible: Matt
+     * Team member(s) responsible: Giovanny
      */
     public ComputerPlayer(String name, GameBoard board) {
-        super(name, board);
+        super("Cpu", board);
     }
 
 }

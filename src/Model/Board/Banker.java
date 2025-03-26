@@ -225,7 +225,7 @@ public class Banker {
      * @param player   The player buying the property
      * @throws PlayerNotFoundException    if player is not found
      * @throws InsufficientFundsException if player has insufficient funds
-     *                                    Team member(s) responsible: Matt
+     * Team member(s) responsible: Matt
      */
     public void sellProperty(BoardSpace property, Player player) throws PlayerNotFoundException {
         if (!availableProperties.contains(property)) {
@@ -244,7 +244,7 @@ public class Banker {
      * @param property The property to buy
      * @param player   The player selling the property
      * @throws PlayerNotFoundException if player is not found
-     *                                 Team member(s) responsible: Matt
+     *  Team member(s) responsible: Matt
      */
     public void buyBackProperty(Property property, Player player) throws PlayerNotFoundException {
         if (property.getOwner() != player) {

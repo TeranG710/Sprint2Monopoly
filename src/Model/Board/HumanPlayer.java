@@ -14,7 +14,7 @@ public class HumanPlayer extends Player {
      *
      * @param name  Player's name
      * @param board The game board
-     * Team member(s) responsible: Matt
+     * Team member(s) responsible: Giovanny
      */
     public HumanPlayer(String name, GameBoard board) {
         super(name, board);

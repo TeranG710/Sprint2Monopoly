@@ -31,7 +31,7 @@ public class Game {
         this.banker = new Banker();
         this.chanceCard = new ChanceCard();
         this.communityChestCard = new CommunityChestCard();
-        this.board = new GameBoard();
+        this.board = new GameBoard(banker);
         this.players = new ArrayList<>();
         this.inProgress = false;
     }
@@ -117,7 +117,7 @@ public class Game {
         if (players.isEmpty()) {
             throw new PlayerNotFoundException();
         }
-        Player winner = players.get(0);
+        Player winner = players.getFirst();
         for (Player player : players) {
             if(banker.getBalance(winner) < banker.getBalance(player)){
                 winner = player;

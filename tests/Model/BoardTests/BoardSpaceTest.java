@@ -1,6 +1,7 @@
 package Model.BoardTests;
 
 
+import Model.Board.Banker;
 import Model.Board.GameBoard;
 import Model.Exceptions.PlayerNotFoundException;
 import Model.Spaces.BoardSpace;
@@ -58,7 +59,8 @@ public class BoardSpaceTest {
     }
     @BeforeEach
     public void setUp() {
-        board = new GameBoard();
+        Banker banker = new Banker();
+        board = new GameBoard(banker);
         testSpace = new TestBoardSpace("Test Space", 5);
         testToken = new Token("Car");
     }
