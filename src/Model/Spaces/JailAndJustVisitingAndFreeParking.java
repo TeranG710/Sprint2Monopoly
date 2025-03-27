@@ -89,7 +89,18 @@ public class JailAndJustVisitingAndFreeParking extends BoardSpace {
         }
     }
 
+    /**
+     * Handle the player's stay in jail
+     * @param player
+     * @param dice
+     * @return
+     * @throws PlayerNotFoundException
+     * Team member(s) responsible: Deborah
+     */
     private boolean handleJailStay(Player player, Dice dice) throws PlayerNotFoundException {
+        if (useGetOutOfJailFreeCard(player)) {
+            return true;
+        }
         dice.roll();
         System.out.println(player.getName() + "rolled a " + dice.getSum());
         if (dice.isDouble()) {
@@ -110,6 +121,13 @@ public class JailAndJustVisitingAndFreeParking extends BoardSpace {
         System.out.println(player.getName() + " has been in jail for " + player.getTurnsInJail() + " turns");
         return false;
     }
+
+    /**
+     * Pay the fine to get out of jail
+     * @param player
+     * @return
+     * @throws PlayerNotFoundException
+     */
     public boolean payToGetOutOfJail(Player player) throws PlayerNotFoundException {
         if (!player.isInJail()) {
             return false;
@@ -125,6 +143,13 @@ public class JailAndJustVisitingAndFreeParking extends BoardSpace {
         System.out.println(player.getName() + " paid $" + JAIL_FINE + " to get out of jail!");
         return true;
     }
+
+    /**
+     * Use the Get Out of Jail Free card
+     * @param player
+     * @return
+     * Team member(s) responsible: Deborah
+     */
     public boolean useGetOutOfJailFreeCard(Player player) {
         if (!player.isInJail()) {
             return false;
@@ -141,6 +166,11 @@ public class JailAndJustVisitingAndFreeParking extends BoardSpace {
         return true;
     }
 
+    /**
+     * Release the player from jail
+     * @param player
+     * Team member(s) responsible: Deborah
+     */
     private void releaseFromJail(Player player) {
         player.setInJail(false);
         player.resetTurnsInJail();
