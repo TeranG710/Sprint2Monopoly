@@ -378,4 +378,171 @@ public class Banker {
     public int getAvailableHotels() {
         return availableHotels;
     }
+
+    
+        /**
+     * Conducts an auction for a property among a list of bidders.
+     * @param property The property being auctioned
+     * @param bidders The players participating in the auction
+     * @return The winning player, or null if no one won the auction
+     * Team member(s) responsible: Matt
+     */
+    public Player auctionProperty(BoardSpace property, List<Player> bidders) {
+        // Validation
+        if (property == null || bidders == null || bidders.isEmpty()) {
+            System.out.println("Cannot conduct auction: Invalid property or no bidders.");
+            return null;
+        }
+        
+        System.out.println("\nAuction for " + property.getName() + " (Value: $" + property.getPurchasePrice() + ")");
+        
+        int highestBid = 0;
+        Player highestBidder = null;
+        
+        // Keep track of active bidders
+        Map<Player, Boolean> stillBidding = new HashMap<>();
+        for (Player player : bidders) {
+            stillBidding.put(player, true);
+        }
+        
+        // Continue auction until only one player is left bidding or all pass
+        boolean auctionActive = true;
+        while (auctionActive) {
+            // Count players still in the auction
+            int activeBidders = 0;
+            for (Boolean active : stillBidding.values()) {
+                if (active) activeBidders++;
+            }
+            
+            // If only one or zero active bidders remain, end the auction
+            if (activeBidders <= 1) {
+                auctionActive = false;
+                break;
+            }
+            
+            // Each player gets a chance to bid
+            for (Player player : bidders) {
+                // Skip players who have already passed
+                if (!stillBidding.get(player)) {
+                    continue;
+                }
+                
+                try {
+                    // Skip if player can't afford to bid higher than current bid
+                    if (getBalance(player) <= highestBid) {
+                        stillBidding.put(player, false);
+                        System.out.println(player.getName() + " cannot afford to bid higher and is out of the auction.");
+                        continue;
+                    }
+                    
+                    // Get bid from player (simplified for now)
+                    int maxPossibleBid = getBalance(player);
+                    int minimumBid = highestBid + 1;
+                    int bid = getBidFromPlayer(player, property, highestBid, maxPossibleBid);
+                    
+                    // Player passes
+                    if (bid <= highestBid) {
+                        stillBidding.put(player, false);
+                        System.out.println(player.getName() + " passes on bidding for " + property.getName());
+                        continue;
+                    }
+                    
+                    // Valid bid
+                    highestBid = bid;
+                    highestBidder = player;
+                    System.out.println(player.getName() + " bids $" + bid + " for " + property.getName());
+                    
+                } catch (PlayerNotFoundException e) {
+                    System.out.println("Error: " + e.getMessage());
+                    stillBidding.put(player, false);
+                }
+            }
+            
+            // Check if only one bidder remains active
+            activeBidders = 0;
+            for (Boolean active : stillBidding.values()) {
+                if (active) activeBidders++;
+            }
+            
+            if (activeBidders <= 1) {
+                auctionActive = false;
+            }
+        }
+        
+        // Process the winning bid
+        if (highestBidder != null && highestBid > 0) {
+            try {
+                // Deduct money from player
+                withdraw(highestBidder, highestBid);
+                
+                // Update property ownership
+                property.setOwner(highestBidder);
+                addTitleDeed(highestBidder, property);
+                
+                System.out.println(highestBidder.getName() + " won the auction for " + 
+                                property.getName() + " with a bid of $" + highestBid);
+                
+            } catch (PlayerNotFoundException e) {
+                System.out.println("Error processing auction transaction: " + e.getMessage());
+                return null;
+            }
+        } else {
+            System.out.println("No bids were placed. " + property.getName() + " remains with the bank.");
+        }
+        
+        return highestBidder;
+    }
+
+    /**
+     * Gets a bid from a player in an auction.
+     * For computer players, uses AI logic. For human players, gets input from console.
+     * 
+     * @param player The player making the bid
+     * @param property The property being auctioned
+     * @param currentHighestBid The current highest bid
+     * @param maxPossibleBid The maximum the player can bid
+     * @return The bid amount, or 0 to pass
+     * Team member(s) responsible: Matt
+     */
+    private int getBidFromPlayer(Player player, BoardSpace property, int currentHighestBid, int maxPossibleBid) {
+        // Computer player logic - simplified for testing
+        if (player.getName().startsWith("Cpu")) {
+            // Simple strategy: bid up to 80% of property value if they can afford it
+            int propertyValue = property.getPurchasePrice();
+            int maxWillingToBid = (int)(propertyValue * 0.8);
+            maxWillingToBid = Math.min(maxWillingToBid, maxPossibleBid);
+            
+            // If current bid is already higher than willing to pay, pass
+            if (currentHighestBid >= maxWillingToBid) {
+                return 0; // Pass
+            }
+            
+            // If first bid, start at 50% of property value
+            if (currentHighestBid == 0) {
+                return Math.min(propertyValue / 2, maxPossibleBid);
+            }
+            
+            // Otherwise, bid minimum increment
+            return currentHighestBid + 10;
+        }
+        
+        // Human player logic - simplified for testing
+        // In actual implementation, this would use a GUI
+        // For testing, just bid 75% of property value if can afford it
+        int propertyValue = property.getPurchasePrice();
+        int suggestedBid = (int)(propertyValue * 0.75);
+        
+        // Make sure bid is higher than current highest bid
+        suggestedBid = Math.max(suggestedBid, currentHighestBid + 10);
+        
+        // Ensure can't bid more than have
+        suggestedBid = Math.min(suggestedBid, maxPossibleBid);
+        
+        // If can't afford to outbid, pass
+        if (suggestedBid <= currentHighestBid) {
+            return 0;
+        }
+        
+        return suggestedBid;
+    }
 }
