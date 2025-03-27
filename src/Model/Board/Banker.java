@@ -379,8 +379,7 @@ public class Banker {
         return availableHotels;
     }
 
-    
-        /**
+    /**
      * Conducts an auction for a property among a list of bidders.
      * @param property The property being auctioned
      * @param bidders The players participating in the auction
@@ -435,9 +434,8 @@ public class Banker {
                         continue;
                     }
                     
-                    // Get bid from player (simplified for now)
+                    // Get bid from player (simplified for testing)
                     int maxPossibleBid = getBalance(player);
-                    int minimumBid = highestBid + 1;
                     int bid = getBidFromPlayer(player, property, highestBid, maxPossibleBid);
                     
                     // Player passes
@@ -472,10 +470,8 @@ public class Banker {
         // Process the winning bid
         if (highestBidder != null && highestBid > 0) {
             try {
-                // Deduct money from player
+                // Transfer money and update property ownership
                 withdraw(highestBidder, highestBid);
-                
-                // Update property ownership
                 property.setOwner(highestBidder);
                 addTitleDeed(highestBidder, property);
                 
@@ -495,7 +491,7 @@ public class Banker {
 
     /**
      * Gets a bid from a player in an auction.
-     * For computer players, uses AI logic. For human players, gets input from console.
+     * For computer players, uses AI logic. For human players, uses simplified logic for testing.
      * 
      * @param player The player making the bid
      * @param property The property being auctioned

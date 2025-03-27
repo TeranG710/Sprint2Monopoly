@@ -40,7 +40,7 @@ public class GameBoard {
      * Initializes the game board with all the spaces.
      * Team member(s) responsible: Deborah
      */
-    public GameBoard(Banker banker) {
+    public GameBoard(Banker banker, Game game) {
         this.banker = new Banker();
         this.boardElements = new BoardSpace[NUM_SPACES];
         this.dice = new Dice();
@@ -68,6 +68,14 @@ public class GameBoard {
         return banker;
     }
 
+    /**
+     * Getter for game
+     * @return game 
+     * Team member(s) responsible: Matt
+     */
+    public Game getGame() {
+        return game;
+    }
     /**
      * Gets the chance card object
      *
